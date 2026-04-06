@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portrait de l'accessibilité — Santé auditive au Québec</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0B2545;--teal:#13698B;--teal-light:#1B8AAF;--cream:#F8F5F0;--sand:#EDE8E0;--white:#FFFFFF;--orange:#E87B35;--red:#C0392B;--green:#27AE60;--green-light:#A8E6CF;--text:#1A1A2E;--text-muted:#5A6178;--border:#D5CFC5}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:17px}
+body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--teal) 60%,var(--teal-light) 100%);color:#fff;padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-20%;width:700px;height:700px;background:radial-gradient(circle,rgba(79,180,216,.15) 0%,transparent 70%);border-radius:50%}
+.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
+.hero-logo{display:block;height:48px;width:auto;margin-bottom:1.5rem;filter:brightness(0) invert(1);opacity:.92}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4.5vw,3rem);line-height:1.15;margin-bottom:.8rem;font-weight:400}
+.hero .sub{font-size:1rem;opacity:.85;max-width:640px;line-height:1.7}
+.hero-meta{margin-top:1.8rem;display:flex;gap:2rem;flex-wrap:wrap;font-size:.82rem;opacity:.65}
+
+.main{max-width:940px;margin:0 auto;padding:2.5rem 2rem 5rem}
+.big-stat{text-align:center;margin:2.5rem 0 1.5rem}
+.big-stat .num{font-family:'DM Serif Display',serif;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1}
+.big-stat .qc{color:var(--teal)}.big-stat .fr{color:var(--green)}.big-stat .sep{color:var(--border);font-weight:300;margin:0 .3em}
+.big-stat .label{font-size:1rem;color:var(--text-muted);margin-top:.5rem}
+.intro{text-align:center;max-width:640px;margin:0 auto 2.2rem;color:var(--text-muted);font-size:.95rem}
+.legend{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.8rem;font-size:.85rem;font-weight:600}
+.legend span{display:flex;align-items:center;gap:.5rem}
+.dot{width:14px;height:14px;border-radius:4px}
+.dot.qc{background:var(--teal)}.dot.fr{background:var(--green-light);border:2px solid var(--green)}
+
+/* ═══ FUNNEL ═══ */
+.funnel{margin:0 0 .5rem}
+.step{
+  cursor:pointer;padding:12px 16px;border-radius:12px;margin-bottom:6px;
+  transition:background .2s,box-shadow .2s;border:2px solid transparent;
+}
+.step:hover{background:rgba(0,0,0,.02);border-color:var(--border)}
+.step.on{background:var(--white);border-color:var(--teal);box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.step-top{display:flex;align-items:center;gap:12px}
+.step-label{width:140px;flex-shrink:0;font-size:.88rem;font-weight:600;color:var(--navy)}
+.step-chevron{
+  width:28px;height:28px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;background:var(--sand);color:var(--teal);
+  font-size:.75rem;font-weight:700;transition:all .25s;
+  font-family:system-ui;
+}
+.step:hover .step-chevron{background:var(--teal);color:#fff}
+.step.on .step-chevron{background:var(--teal);color:#fff;transform:rotate(180deg)}
+.step-bars{flex:1;position:relative;height:44px;border-radius:8px;overflow:visible}
+.bar-fr{position:absolute;top:0;left:0;height:100%;border-radius:8px;background:var(--green-light);opacity:.45;transition:width .7s cubic-bezier(.25,.46,.45,.94)}
+.bar-qc{position:absolute;top:0;left:0;height:100%;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--teal-light));box-shadow:2px 0 12px rgba(19,105,139,.25);transition:width .7s cubic-bezier(.25,.46,.45,.94);z-index:2}
+.bar-gap{position:absolute;top:0;height:100%;border-radius:0 8px 8px 0;background:repeating-linear-gradient(-45deg,rgba(192,57,43,.06),rgba(192,57,43,.06) 4px,transparent 4px,transparent 10px);z-index:1;transition:left .7s,width .7s}
+.step-nums{width:130px;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:0}
+.step-nums .n-qc{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--teal);line-height:1.2}
+.step-nums .n-fr{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;color:var(--green);line-height:1.2;opacity:.7}
+.step-nums .n-gap{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:700;color:var(--red);line-height:1.2;background:rgba(192,57,43,.08);padding:1px 6px;border-radius:4px;margin-top:2px}
+
+/* ── DETAIL ── */
+.detail{
+  background:var(--white);border:1px solid var(--border);border-radius:0 0 14px 14px;
+  overflow:hidden;max-height:0;opacity:0;
+  transition:max-height .45s ease,opacity .3s ease;
+  box-shadow:0 4px 20px rgba(0,0,0,.04);margin-top:-8px;margin-bottom:8px;border-top:none;
+}
+.detail.open{max-height:3000px;opacity:1}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.6rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#F0F5F8,var(--sand))}
+.d-title{font-weight:700;font-size:1rem;color:var(--navy)}
+.d-ecart{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;padding:.2rem .7rem;border-radius:6px;white-space:nowrap}
+.d-close{background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--text-muted);padding:.2rem .5rem;border-radius:6px;transition:background .2s;margin-left:.8rem}.d-close:hover{background:rgba(0,0,0,.06)}
+.d-body{padding:1.6rem}
+.d-body h4{font-size:.9rem;font-weight:700;color:var(--navy);margin:1.3rem 0 .5rem}.d-body h4:first-child{margin-top:0}
+.d-body .base{font-size:.72rem;color:var(--text-muted);font-style:italic;margin-bottom:.8rem}
+
+.sr{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.ms{flex:1;min-width:110px;background:var(--cream);border-radius:10px;padding:1rem;text-align:center;border:1px solid var(--border)}
+.ms .v{font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1.1}
+.ms .v.qc{color:var(--teal)}.ms .v.fr{color:var(--green)}.ms .v.delta{color:var(--red)}
+.ms .l{font-size:.72rem;color:var(--text-muted);margin-top:.2rem}
+
+.rl{display:flex;flex-direction:column;gap:.8rem}
+.r{display:flex;flex-direction:column;gap:.3rem;font-size:.86rem;color:var(--text)}
+.r-top{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
+.rn{flex:1}
+.rp{font-family:'JetBrains Mono',monospace;font-size:.88rem;font-weight:700;color:var(--orange);white-space:nowrap}
+.rt{width:100%;height:12px;background:rgba(0,0,0,.05);border-radius:6px;overflow:hidden}
+.rf{height:100%;border-radius:6px;background:var(--orange);transition:width .5s ease}
+
+.ins{background:var(--cream);border-left:3px solid var(--teal);padding:.9rem 1.1rem;border-radius:0 8px 8px 0;font-size:.86rem;color:var(--text-muted);margin-top:1rem;line-height:1.65}
+.source{font-size:.72rem;color:var(--text-muted);font-style:italic;margin-top:2rem;padding-top:.8rem;border-top:1px solid var(--border)}
+.footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.5rem 2rem;text-align:center;font-size:.82rem}
+.footer strong{color:#fff}
+.footer-logo{display:block;height:32px;width:auto;margin:0 auto .8rem;filter:brightness(0) invert(1);opacity:.7}
+
+/* ═══ ECONOMICS SECTION ═══ */
+.divider{height:1px;background:var(--border);margin:3rem 0}
+.section-tag{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:600;color:var(--teal);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:2px solid var(--teal);display:inline-block}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.25;margin-bottom:1.5rem;margin-top:.5rem;color:var(--navy);font-weight:400}
+.econ-hero{display:flex;align-items:center;gap:2rem;background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:14px;padding:2.2rem;margin:1.5rem 0;color:#fff;flex-wrap:wrap}
+.econ-hero .econ-big{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,4.5rem);line-height:1;white-space:nowrap}
+.econ-hero .econ-txt{font-size:.95rem;opacity:.88;max-width:400px;line-height:1.6}
+.econ-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin:1.5rem 0}
+.econ-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center}
+.econ-card .ec-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--teal);line-height:1.1}
+.econ-card .ec-num.green{color:var(--green)}
+.econ-card .ec-num.red{color:var(--red)}
+.econ-card .ec-lbl{font-size:.82rem;color:var(--text-muted);margin-top:.4rem;line-height:1.4}
+.econ-table{width:100%;border-collapse:separate;border-spacing:0;margin:1.5rem 0;font-size:.9rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.econ-table th{background:var(--navy);color:#fff;padding:.9rem 1.2rem;text-align:left;font-weight:600;font-size:.82rem}
+.econ-table td{padding:.8rem 1.2rem;background:var(--white);border-bottom:1px solid var(--border)}
+.econ-table tr:last-child td{border-bottom:none}
+.econ-table .highlight{background:rgba(19,105,139,.05);font-weight:600}
+.card{background:var(--white);border-radius:12px;padding:2rem;margin:1.5rem 0;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.03)}
+.card-accent{border-left:4px solid var(--teal)}
+
+/* ═══ PARCOURS TIMELINE ═══ */
+.parcours{margin:1.5rem 0 0;position:relative;padding-left:0}
+.parc-step{
+  display:flex;gap:1rem;align-items:flex-start;
+  margin-bottom:.6rem;padding:1rem 1.2rem;
+  background:var(--white);border:1px solid var(--border);border-radius:10px;
+  transition:transform .15s;
+}
+.parc-step:hover{transform:translateX(4px)}
+.parc-num{
+  width:36px;height:36px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--teal),var(--teal-light));
+  color:#fff;font-family:'JetBrains Mono',monospace;
+  font-size:.85rem;font-weight:700;
+}
+.parc-body{flex:1}
+.parc-title{font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:.2rem}
+.parc-desc{font-size:.84rem;color:var(--text-muted);line-height:1.6}
+
+@media(max-width:700px){
+  .hero{padding:2.5rem 1.5rem 2rem}.main{padding:1.5rem 1.2rem 4rem}
+  .step{padding:10px 10px}.step-label{width:80px;font-size:.76rem}
+  .step-bars{height:36px}.step-nums{width:88px}
+  .step-nums .n-qc{font-size:.88rem}.step-nums .n-fr{font-size:.65rem}
+  .step-chevron{width:24px;height:24px;font-size:.65rem}
+  .sr{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <img src="logo-OAQ.jpg" alt="Ordre des audioprothésistes du Québec" class="hero-logo">
+    <h1>Portrait de l'accessibilité</h1>
+    <p class="sub">Appareiller les Québécoises et les Québécois au bon moment pour maximiser les retombées — identifier les freins à l'accès sur tout le parcours vers la correction auditive.</p>
+    <div class="hero-meta">
+      <span>Rapport présenté au ministère de la Santé et des Services sociaux</span>
+      <span>26 mars 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="main">
+
+  <!-- PARCOURS COMPLET -->
+  <div class="section-tag" style="margin-top:1rem;">Le parcours vers la correction auditive</div>
+  <div class="section-title">Des freins à chaque étape — de la sensibilisation au suivi</div>
+
+  <p>Le parcours vers la correction auditive comporte plusieurs étapes. À chacune, des freins font décrocher des Québécoises et des Québécois qui auraient bénéficié d'une intervention. L'enjeu pour le MSSS est d'agir sur l'ensemble de la chaîne pour maximiser les retombées de la correction auditive.</p>
+
+  <div class="parcours">
+    <div class="parc-step">
+      <div class="parc-num">1</div>
+      <div class="parc-body">
+        <div class="parc-title">Sensibilisation</div>
+        <div class="parc-desc">Faire connaître les conséquences de la perte auditive non traitée (démence, chutes, isolement). 75 % des malentendants québécois estiment qu'une perte légère ne justifie pas l'acquisition d'un appareil.</div>
+      </div>
+    </div>
+    <div class="parc-step">
+      <div class="parc-num">2</div>
+      <div class="parc-body">
+        <div class="parc-title">Déstigmatisation</div>
+        <div class="parc-desc">Combattre la perception que les appareils auditifs « font vieux » (42 %), sont inesthétiques (36 %) ou attirent le jugement social (25 %). La stigmatisation retarde la consultation de plusieurs années.</div>
+      </div>
+    </div>
+    <div class="parc-step">
+      <div class="parc-num">3</div>
+      <div class="parc-body">
+        <div class="parc-title">Dépistage et détection précoce</div>
+        <div class="parc-desc">37 % des malentendants québécois n'ont jamais consulté un professionnel, et plus du tiers de ceux qui consultent attendent plus d'un an avant de le faire. La détection précoce chez les personnes symptomatiques est un levier prioritaire, et le dépistage populationnel est un levier complémentaire à envisager.</div>
+      </div>
+    </div>
+    <div class="parc-step">
+      <div class="parc-num">4</div>
+      <div class="parc-body">
+        <div class="parc-title">Consultation d'un professionnel et recommandation</div>
+        <div class="parc-desc">Parmi ceux qui consultent, l'ORL (49 %) et l'audiologiste (47 %) sont les professionnels les plus sollicités. C'est à cette étape que l'écart avec la France est le plus marqué (−34 pts pour la recommandation). L'anticipation du coût pour le patient par le professionnel peut freiner la recommandation au Québec.</div>
+      </div>
+    </div>
+    <div class="parc-step">
+      <div class="parc-num">5</div>
+      <div class="parc-body">
+        <div class="parc-title">Appareillage</div>
+        <div class="parc-desc">Le prix est le premier frein à l'achat (46 %). L'absence d'assurance et le manque de ressources financières représentent 48 % des freins à la consultation. Les barrières financières sont le principal levier d'action pour les politiques publiques.</div>
+      </div>
+    </div>
+    <div class="parc-step">
+      <div class="parc-num">6</div>
+      <div class="parc-body">
+        <div class="parc-title">Suivi</div>
+        <div class="parc-desc">95 % des porteurs québécois font un suivi annuel chez l'audioprothésiste. 92 % estiment que l'achat en personne chez un professionnel a une valeur ajoutée. Le suivi est essentiel à l'efficacité à long terme de l'appareillage et à la réadaptation au monde sonore.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card card-accent" style="margin-top:1.5rem;">
+    <p style="margin-bottom:0;"><strong>Constats pour le MSSS :</strong> Lorsque le parcours est complété, les résultats sont remarquables — 95 % de satisfaction, 85 % d'adaptation facile. Le problème n'est pas la qualité de la correction auditive, mais d'y accéder. Le parcours actuel perd les trois quarts de la population cible en cours de route, principalement pour des raisons de perception et de coût. Des interventions ciblées à chaque étape — de la sensibilisation au suivi — permettraient d'augmenter significativement le taux d'appareillage des Québécoises et des Québécois et de profiter pleinement des retombées positives de la correction auditive.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FREINS COMPARÉS -->
+  <div class="section-tag">Freins à l'accès — Québec vs France</div>
+  <div class="section-title">L'entonnoir qui fuit : où perd-on les Québécoises et les Québécois ?</div>
+
+  <div class="big-stat">
+    <div class="num"><span class="qc">25 %</span><span class="sep">vs</span><span class="fr">55 %</span></div>
+    <div class="label">des malentendants possèdent des prothèses auditives</div>
+  </div>
+
+  <p class="intro">Les données du Portrait Ad hoc (2022) et d'EuroTrak France (2025) permettent de quantifier les pertes à quatre étapes clés du parcours. Cliquez sur une étape pour voir les <strong>freins identifiés et les données comparatives</strong>.</p>
+
+  <div class="legend">
+    <span><span class="dot qc"></span> Québec</span>
+    <span><span class="dot fr"></span> France (référence)</span>
+  </div>
+
+  <div class="funnel">
+
+    <div class="step" data-s="0">
+      <div class="step-top">
+        <div class="step-label">Malentendants auto-déclarés</div>
+        <div class="step-bars">
+          <div class="bar-fr" style="width:100%"></div>
+          <div class="bar-qc" style="width:100%"></div>
+        </div>
+        <div class="step-nums">
+          <span class="n-qc">100 %</span>
+          <span class="n-fr">100 % FR</span>
+        </div>
+        <div class="step-chevron">▼</div>
+      </div>
+    </div>
+    <div class="detail" id="det-0"></div>
+
+    <div class="step" data-s="1">
+      <div class="step-top">
+        <div class="step-label">Consultation professionnelle</div>
+        <div class="step-bars">
+          <div class="bar-fr" style="width:82%"></div>
+          <div class="bar-gap" style="left:63%;width:19%"></div>
+          <div class="bar-qc" style="width:63%"></div>
+        </div>
+        <div class="step-nums">
+          <span class="n-qc">63 %</span>
+          <span class="n-fr">82 % FR</span>
+          <span class="n-gap">−19 pts</span>
+        </div>
+        <div class="step-chevron">▼</div>
+      </div>
+    </div>
+    <div class="detail" id="det-1"></div>
+
+    <div class="step" data-s="2">
+      <div class="step-top">
+        <div class="step-label">Recommandation de prothèse</div>
+        <div class="step-bars">
+          <div class="bar-fr" style="width:67%"></div>
+          <div class="bar-gap" style="left:33%;width:34%"></div>
+          <div class="bar-qc" style="width:33%"></div>
+        </div>
+        <div class="step-nums">
+          <span class="n-qc">33 %</span>
+          <span class="n-fr">67 % FR</span>
+          <span class="n-gap">−34 pts</span>
+        </div>
+        <div class="step-chevron">▼</div>
+      </div>
+    </div>
+    <div class="detail" id="det-2"></div>
+
+    <div class="step" data-s="3">
+      <div class="step-top">
+        <div class="step-label">Possède des prothèses</div>
+        <div class="step-bars">
+          <div class="bar-fr" style="width:55%"></div>
+          <div class="bar-gap" style="left:25%;width:30%"></div>
+          <div class="bar-qc" style="width:25%"></div>
+        </div>
+        <div class="step-nums">
+          <span class="n-qc">25 %</span>
+          <span class="n-fr">55 % FR</span>
+          <span class="n-gap">−30 pts</span>
+        </div>
+        <div class="step-chevron">▼</div>
+      </div>
+    </div>
+    <div class="detail" id="det-3"></div>
+
+  </div>
+
+  <p class="source">Ad hoc recherche, « Portrait des personnes malentendantes au Québec », août 2022 (n = 500, Québécois malentendants de 40 ans et plus, base autodéclarée, QA–QF). Anovum, EuroTrak FRA 2025 (n = 14 939 ; n = 1 304 malentendants ; n = 705 porteurs). Johnson & Bisgaard (2024), International Journal of Audiology.</p>
+
+  <div class="divider"></div>
+
+  <!-- SECTION : RETOMBÉES ÉCONOMIQUES -->
+  <div class="section-tag">Retombées économiques</div>
+  <div class="section-title">L'inaction coûte plus cher que l'action</div>
+
+  <p>L'étude avantages-coûts réalisée par la firme AppEco en février 2025, commandée par l'OAQ, modélise l'impact d'une augmentation du taux d'adoption des prothèses auditives au Québec. Le modèle théorique fait passer le taux d'adoption de <strong>32 % à 46 %</strong> — soit une augmentation de 14 points de pourcentage, alignée sur le modèle français. Les résultats démontrent un retour largement supérieur à l'investissement, dans tous les scénarios analysés.</p>
+
+  <div class="econ-hero">
+    <div class="econ-big">8,90 $</div>
+    <div class="econ-txt">de retour pour chaque dollar investi par le gouvernement sur 5 ans<br><strong>Scénario Progrès</strong> (modèle français appliqué au Québec)</div>
+  </div>
+
+  <div class="econ-grid">
+    <div class="econ-card">
+      <div class="ec-num">133 M$</div>
+      <div class="ec-lbl">Investissement additionnel du gouvernement sur 5 ans</div>
+    </div>
+    <div class="econ-card">
+      <div class="ec-num green">1,2 G$</div>
+      <div class="ec-lbl">Retour pour le gouvernement sur 5 ans</div>
+    </div>
+    <div class="econ-card">
+      <div class="ec-num green">5,3 G$</div>
+      <div class="ec-lbl">Économies nettes pour le gouvernement sur 20 ans</div>
+    </div>
+    <div class="econ-card">
+      <div class="ec-num">5,1</div>
+      <div class="ec-lbl">Ratio minimum en analyse de sensibilité (pire scénario)</div>
+    </div>
+  </div>
+
+  <table class="econ-table">
+    <thead>
+      <tr><th></th><th>Scénario Progrès (5 ans)</th><th>Scénario Progrès (20 ans)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Ratio AAC — gouvernement</td><td class="highlight">8,9</td><td class="highlight">10,1</td></tr>
+      <tr><td>Ratio AAC — société</td><td>7,1</td><td>7,6</td></tr>
+      <tr><td>Investissement additionnel gouv.</td><td>133 M $</td><td>—</td></tr>
+      <tr><td>Retour pour le gouvernement</td><td>1,2 G $</td><td>5,3 G $ (net)</td></tr>
+      <tr><td>Taux d'adoption visé</td><td colspan="2">46 % (modèle français), 1,76 prothèse par personne</td></tr>
+    </tbody>
+  </table>
+
+  <div class="card card-accent">
+    <h4 style="margin-top:0;font-size:.95rem;color:var(--navy);">Ce que la science dit clairement</h4>
+    <p style="margin-bottom:0;">La perte auditive non traitée est le <strong>premier facteur de risque modifiable de la démence</strong> (Commission Lancet, 2024). Les prothèses auditives sont associées à une réduction de <strong>30 % de l'incidence de démence</strong> chez les personnes à risque, de <strong>50 % des chutes</strong>, et compensent entre <strong>65 % et 95 % de la perte salariale</strong> liée à la perte auditive. L'étude exclut les bénéfices sur la santé mentale et la qualité de vie — les chiffres sont donc conservateurs.</p>
+  </div>
+
+  <p class="source">Gougeon, P., Denis, J.-C. et Zaki, O. (2025). Analyse avantages-coûts d'une bonification du programme de prothèses auditives au Québec. AppEco Analyse stratégique, rapport remis à l'OAQ, 17 février 2025. Commission Lancet on Dementia (2024), Lancet, 404(10452).</p>
+
+  <div class="divider"></div>
+
+  <!-- SECTION : PROTHÈSES EN VENTE LIBRE -->
+  <div class="section-tag">Prothèses auditives en vente libre</div>
+  <div class="section-title">Position de l'Ordre</div>
+
+  <div class="econ-hero" style="background:linear-gradient(135deg,#3A3A5C,var(--navy));">
+    <div class="econ-txt" style="max-width:100%;opacity:1;font-size:1.05rem;">
+      « Nous sommes disposés à réfléchir avec le législateur pour bâtir un cadre qui concilie accessibilité et sécurité en respect de notre mission de protection du public. »
+      <br><span style="opacity:.65;font-size:.85rem;">— David Gélinas, président de l'OAQ</span>
+    </div>
+  </div>
+
+  <p>L'OAQ est <strong>favorable</strong> à l'arrivée des prothèses auditives en vente libre au Québec, <strong>à condition que les critères techniques exigés par Santé Canada soient suffisants</strong> pour assurer la protection des consommateurs, comme l'a fait la FDA aux États-Unis. Toutefois, l'Ordre ne les considère pas comme une solution qui augmenterait significativement l'accessibilité à une correction auditive de qualité.</p>
+
+  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Prothèse de prescription vs. en vente libre</h4>
+
+  <table class="econ-table">
+    <thead>
+      <tr><th>Prothèse de prescription</th><th>Prothèse en vente libre (OTC)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Acquise suite à la consultation d'un médecin ou d'un audiologiste (certificat requis)</td><td>Conçue pour être acquise sans consultation — auto-diagnostic, auto-évaluation, auto-ajustement</td></tr>
+      <tr><td>Fournie par l'audioprothésiste avec un suivi adapté</td><td>Acquise dans tout commerce (électronique, grande surface, pharmacie)</td></tr>
+      <tr><td>Ajustée selon la perte auditive par des mesures objectives in vivo</td><td>Auto-ajustée par l'utilisateur</td></tr>
+      <tr><td>Toutes pertes auditives (légères à profondes)</td><td>Pertes légères à modérées (perçues)</td></tr>
+      <tr><td>Encadrée par la Loi, les règlements et le Code de déontologie</td><td>Encadrement variable selon les juridictions</td></tr>
+    </tbody>
+  </table>
+
+  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Le vide réglementaire canadien</h4>
+
+  <table class="econ-table">
+    <thead>
+      <tr><th style="background:var(--green);">✓ FDA américaine (2022)</th><th style="background:var(--red);">✗ Santé Canada</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Adultes 18 ans + avec perte légère à modérée perçue<br>Volume max : 111 dB SPL (117 avec compression)<br>Embout ≥ 10 mm du tympan<br>Mention « OTC Hearing Aid » obligatoire<br>8 drapeaux rouges obligatoires<br>Contrôle de volume ajustable obligatoire</td>
+        <td>Aucune sous-catégorie OTC créée<br>Aucune limite de puissance maximale<br>Aucun étiquetage spécifique OTC<br>Efficacité repose sur la déclaration du fabricant<br>Détaillants exemptés de licence (art. 44)<br>Publicité non encadrée après homologation</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="card card-accent" style="margin-top:1.5rem;">
+    <p style="margin-bottom:.5rem;font-style:italic;">« The provinces and territories decide how licensed medical devices are accessed in their jurisdictions, including whether a prescription is required for such devices. »</p>
+    <p style="margin-bottom:0;font-size:.85rem;color:var(--text-muted);">— Greg Orencsak, sous-ministre de la Santé, Santé Canada, 16 mai 2025</p>
+  </div>
+
+  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Bilan après trois ans aux États-Unis (2022–2025)</h4>
+
+  <div class="econ-grid">
+    <div class="econ-card">
+      <div class="ec-num red">5,7 %</div>
+      <div class="ec-lbl">des porteurs utilisent un OTC aux É.-U. en 2025</div>
+    </div>
+    <div class="econ-card">
+      <div class="ec-num">67 %</div>
+      <div class="ec-lbl">des acheteurs OTC achètent en ligne ou en pharmacie</div>
+    </div>
+    <div class="econ-card">
+      <div class="ec-num red">81 %</div>
+      <div class="ec-lbl">des professionnels préoccupés par le service après-vente</div>
+    </div>
+  </div>
+
+  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Risques identifiés</h4>
+
+  <div class="rl" style="gap:1rem;">
+    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
+      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Masquage de conditions médicales</span></div>
+      <span style="font-size:.84rem;color:var(--text-muted);">Une perte auditive peut signaler une pathologie traitable : tumeur, otosclérose, maladie de Ménière. Sans évaluation préalable, l'amplification non nécessaire ou un retard de diagnostic peut en résulter.</span>
+    </div>
+    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
+      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Dommages auditifs permanents</span></div>
+      <span style="font-size:.84rem;color:var(--text-muted);">L'absence de limites d'amplification au Canada pourrait aggraver irréversiblement la perte auditive ou provoquer des acouphènes. Contrairement à la FDA, Santé Canada n'impose aucune puissance maximale propre aux appareils en vente libre.</span>
+    </div>
+    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
+      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Absence de service et de suivi</span></div>
+      <span style="font-size:.84rem;color:var(--text-muted);">Des appareils potentiellement dangereux et inefficaces côtoient des produits sécuritaires et prometteurs, et le consommateur n'a aucun moyen de les distinguer. Le suivi professionnel, essentiel à l'efficacité de l'appareillage, serait absent avec les appareils en vente libre.</span>
+    </div>
+    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
+      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Population vulnérable et désinformation</span></div>
+      <span style="font-size:.84rem;color:var(--text-muted);">La clientèle âgée est particulièrement exposée aux dérives commerciales. La publicité représente environ 40 % des infractions disciplinaires à l'OAQ (130+ infractions depuis 1990).</span>
+    </div>
+  </div>
+
+  <div class="ins" style="margin-top:1.5rem;">
+    <strong>L'INESSS</strong> constate que les appareils en vente libre améliorent les habiletés auditives des pertes légères à modérées, mais que la qualité et les modalités d'ajustement sont variables. <strong>L'INESSS n'émet pas de recommandation quant à l'utilisation de ces appareils.</strong>
+    <br><span style="font-size:.75rem;color:var(--text-muted);">INESSS, juillet 2023.</span>
+  </div>
+
+  <p class="source">Dobyan & Kihm (2025), MarkeTrak 2025, Seminars in Hearing, 46(03). 21 C.F.R. § 800.30 (FDA). Règlement sur les instruments médicaux, DORS/98-282 (Canada). Lettre de Santé Canada, 16 mai 2025. INESSS, Pratiques pertinentes pour favoriser la santé auditive en milieu d'hébergement de longue durée, juillet 2023. Ad hoc recherche, 2022.</p>
+</main>
+
+<footer class="footer">
+  <img src="logo-OAQ.jpg" alt="OAQ" class="footer-logo">
+  <p><strong>Ordre des audioprothésistes du Québec</strong></p>
+  <p>Rapport présenté au ministère de la Santé et des Services sociaux — 26 mars 2026</p>
+</footer>
+
+<script>
+var DATA=[
+
+// ── STEP 0 : PERCEPTIONS GÉNÉRALES ──
+{title:'Perceptions des malentendants québécois',ecart:'Même point de départ',neg:false,html:
+'<div class="sr">'+
+'<div class="ms"><div class="v qc">680 000</div><div class="l">Québécois malentendants de 40 ans +</div></div>'+
+'<div class="ms"><div class="v">74 %</div><div class="l">qualifient leur audition de « moyenne »</div></div>'+
+'<div class="ms"><div class="v delta">26 %</div><div class="l">qualifient leur audition de « mauvaise »</div></div>'+
+'</div>'+
+'<h4>Réticences à l\'égard des appareils auditifs (% d\'accord)</h4>'+
+'<p class="base">Base : ensemble des répondants (n = 500) — QF1.</p>'+
+'<div class="rl">'+
+'<div class="r"><div class="r-top"><span class="rn">« Si la perte auditive est légère, le port d\'appareil(s) auditif(s) n\'est pas toujours nécessaire »</span><span class="rp">75 %</span></div><div class="rt"><div class="rf" style="width:75%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Les appareils auditifs sont très dispendieux. Leur acquisition est justifiée seulement pour un problème auditif sévère »</span><span class="rp">75 %</span></div><div class="rt"><div class="rf" style="width:75%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Le port d\'appareil(s) auditif(s) est incommodant / inconfortable »</span><span class="rp">52 %</span></div><div class="rt"><div class="rf" style="width:52%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Porter une aide auditive fait vieux »</span><span class="rp">42 %</span></div><div class="rt"><div class="rf" style="width:42%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Le son avec un appareil auditif n\'est pas naturel »</span><span class="rp">40 %</span></div><div class="rt"><div class="rf" style="width:40%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Le port d\'appareil(s) auditif(s) n\'est pas esthétique. Les appareils sont trop visibles et ça fait moche »</span><span class="rp">36 %</span></div><div class="rt"><div class="rf" style="width:36%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Faire faire un appareil auditif est un processus long et fastidieux »</span><span class="rp">35 %</span></div><div class="rt"><div class="rf" style="width:35%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Les gens qui portent un appareil auditif se font juger par la société »</span><span class="rp">25 %</span></div><div class="rt"><div class="rf" style="width:25%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Les appareils auditifs ne sont pas efficaces. Ils ne corrigent pas vraiment les problèmes d\'audition »</span><span class="rp">16 %</span></div><div class="rt"><div class="rf" style="width:16%"></div></div></div>'+
+'</div>'+
+'<div class="ins">Ce ne sont pas des freins à la consultation, mais des perceptions qui colorent l\'ensemble du parcours. 74 % des malentendants jugent leur perte « moyenne » — ce groupe est sous-diagnostiqué et moins enclin à consulter.</div>'
+},
+
+// ── STEP 1 : FREINS À LA CONSULTATION ──
+{title:'Freins à la consultation d\'un professionnel',ecart:'−19 pts vs France',neg:true,html:
+'<div class="sr">'+
+'<div class="ms"><div class="v qc">63 %</div><div class="l">🇨🇦 ont consulté un professionnel</div></div>'+
+'<div class="ms"><div class="v fr">82 %</div><div class="l">🇫🇷 ont discuté avec un ORL ou médecin</div></div>'+
+'<div class="ms"><div class="v delta">37 %</div><div class="l">🇨🇦 n\'ont jamais consulté</div></div>'+
+'</div>'+
+'<h4>Raisons de ne pas avoir consulté un spécialiste</h4>'+
+'<p class="base">Base : n\'ont pas encore consulté un spécialiste pour diagnostic du problème auditif (n = 185) — QD1A / QD1B.</p>'+
+'<div class="rl">'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai une perte auditive trop légère / je n\'ai pas besoin de consulter un spécialiste »</span><span class="rp">39 %</span></div><div class="rt"><div class="rf" style="width:39%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Je n\'ai pas eu le temps de m\'en occuper »</span><span class="rp">25 %</span></div><div class="rt"><div class="rf" style="width:25%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Je n\'ai pas d\'assurance »</span><span class="rp">25 %</span></div><div class="rt"><div class="rf" style="width:25%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Je n\'ai pas les ressources financières »</span><span class="rp">23 %</span></div><div class="rt"><div class="rf" style="width:23%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai peur d\'avoir besoin de porter un appareil auditif »</span><span class="rp">19 %</span></div><div class="rt"><div class="rf" style="width:19%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai l\'impression que c\'est un processus long et fastidieux »</span><span class="rp">18 %</span></div><div class="rt"><div class="rf" style="width:18%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai l\'impression qu\'il n\'y a pas de solution à mon problème auditif »</span><span class="rp">10 %</span></div><div class="rt"><div class="rf" style="width:10%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Je ne sais pas à qui m\'adresser / je ne sais pas par où commencer »</span><span class="rp">10 %</span></div><div class="rt"><div class="rf" style="width:10%"></div></div></div>'+
+'</div>'+
+'<h4>Délai entre le constat du problème et la consultation</h4>'+
+'<p class="base">Base : ceux ayant consulté (n = 315) — QB4A.</p>'+
+'<div class="sr">'+
+'<div class="ms"><div class="v delta">37 %</div><div class="l">attendent 1 an et plus</div></div>'+
+'<div class="ms"><div class="v qc">36 %</div><div class="l">consultent en moins de 3 mois</div></div>'+
+'<div class="ms"><div class="v qc">15 %</div><div class="l">consultent immédiatement</div></div>'+
+'</div>'+
+'<div class="ins"><strong>48 % des freins sont financiers</strong> (absence d\'assurance + manque de ressources). En France, le décrochage à cette étape n\'est que de 18 % (EuroTrak 2025). Le « 100 % santé » élimine la barrière financière dès le premier contact.</div>'
+},
+
+// ── STEP 2 : RECOMMANDATION ──
+{title:'Recommandation de prothèse — l\'écart le plus large',ecart:'−34 pts vs France',neg:true,html:
+'<div class="sr">'+
+'<div class="ms"><div class="v qc">33 %</div><div class="l">🇨🇦 reçoivent une recommandation<br><span style="font-size:.65rem;color:var(--text-muted)">(53 % des 63 % ayant consulté = 33 % du total)</span></div></div>'+
+'<div class="ms"><div class="v fr">67 %</div><div class="l">🇫🇷 reçoivent une recommandation</div></div>'+
+'<div class="ms"><div class="v delta">−34 pts</div><div class="l">Écart le plus large du parcours</div></div>'+
+'</div>'+
+'<h4>Pourquoi cet écart ?</h4>'+
+'<p class="base">Le sondage Ad hoc ne mesure pas directement les freins à la recommandation. L\'écart s\'explique par des facteurs systémiques documentés.</p>'+
+'<div class="ins" style="margin-top:0">Au Québec, l\'anticipation du coût pour le patient par le professionnel peut freiner la recommandation. En France, la couverture intégrale lève ce frein systémique : le médecin sait que le patient pourra se procurer une prothèse sans reste à charge.</div>'+
+'<h4>Le parcours français détaillé (EuroTrak 2025, n = 1 304)</h4>'+
+'<div class="rl">'+
+'<div class="r"><div class="r-top"><span class="rn">Discuté avec ORL / médecin</span><span class="rp" style="color:var(--green)">82 %</span></div><div class="rt"><div class="rf" style="width:82%;background:var(--green)"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">Recommandation positive (ORL ou médecin)</span><span class="rp" style="color:var(--green)">67 %</span></div><div class="rt"><div class="rf" style="width:67%;background:var(--green)"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">Discuté avec audioprothésiste / audiologiste</span><span class="rp" style="color:var(--green)">58 %</span></div><div class="rt"><div class="rf" style="width:58%;background:var(--green)"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">A acheté des prothèses</span><span class="rp" style="color:var(--green)">55 %</span></div><div class="rt"><div class="rf" style="width:55%;background:var(--green)"></div></div></div>'+
+'</div>'+
+'<h4>Facteur n° 1 à l\'international (37 pays OCDE)</h4>'+
+'<p class="base">Johnson & Bisgaard (2024), International Journal of Audiology — régression multivariée.</p>'+
+'<div class="rl">'+
+'<div class="r"><span class="rn" style="font-weight:700">Niveau de subvention</span><div class="rt"><div class="rf" style="width:90%;background:var(--teal)"></div></div><span class="rp" style="color:var(--teal)">1er</span></div>'+
+'<div class="r"><span class="rn" style="font-weight:700">Revenu national brut / hab.</span><div class="rt"><div class="rf" style="width:65%;background:var(--teal)"></div></div><span class="rp" style="color:var(--teal)">2e</span></div>'+
+'</div>'
+},
+
+// ── STEP 3 : FREINS À L'ACHAT ──
+{title:'Freins à l\'acquisition / l\'utilisation d\'une prothèse',ecart:'−30 pts vs France',neg:true,html:
+'<div class="sr">'+
+'<div class="ms"><div class="v qc">25 %</div><div class="l">🇨🇦 possèdent des prothèses<br><span style="font-size:.65rem;color:var(--text-muted)">(76 % des 167 à qui on a recommandé)</span></div></div>'+
+'<div class="ms"><div class="v fr">55 %</div><div class="l">🇫🇷 possèdent des prothèses</div></div>'+
+'<div class="ms"><div class="v delta">−30 pts</div><div class="l">Écart final</div></div>'+
+'</div>'+
+'<h4>Raisons de ne pas avoir acquis / de ne pas utiliser l\'appareil</h4>'+
+'<p class="base">Base : n\'a pas fait l\'acquisition ou ne porte pas / rarement son appareil malgré une recommandation (n = 57) — QC1AB / QC2AB.</p>'+
+'<div class="rl">'+
+'<div class="r"><div class="r-top"><span class="rn">« À cause du prix, ce sont des appareils très dispendieux »</span><span class="rp">46 %</span></div><div class="rt"><div class="rf" style="width:46%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai une perte auditive trop légère / j\'entends suffisamment bien sans appareil »</span><span class="rp">38 %</span></div><div class="rt"><div class="rf" style="width:38%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Le port d\'un appareil auditif est incommodant / inconfortable »</span><span class="rp">31 %</span></div><div class="rt"><div class="rf" style="width:31%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai de la difficulté à accepter que j\'aie besoin d\'un appareil auditif »</span><span class="rp">27 %</span></div><div class="rt"><div class="rf" style="width:27%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai l\'impression que ça me fait vieillir / porter une aide auditive fait vieux »</span><span class="rp">16 %</span></div><div class="rt"><div class="rf" style="width:16%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« J\'ai des doutes sur l\'efficacité des appareils auditifs »</span><span class="rp">15 %</span></div><div class="rt"><div class="rf" style="width:15%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Je juge ne pas avoir besoin d\'un appareil auditif »</span><span class="rp">10 %</span></div><div class="rt"><div class="rf" style="width:10%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Je ne trouve pas ça esthétiquement beau »</span><span class="rp">9 %</span></div><div class="rt"><div class="rf" style="width:9%"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">« Je ne suis pas prêt à m\'afficher publiquement avec un appareil auditif »</span><span class="rp">9 %</span></div><div class="rt"><div class="rf" style="width:9%"></div></div></div>'+
+'</div>'+
+'<h4>L\'effet « 100 % santé » — évolution du taux d\'adoption en France</h4>'+
+'<p class="base">EuroTrak France, séries 2009–2025 (Anovum / EHIMA).</p>'+
+'<div class="rl">'+
+'<div class="r"><div class="r-top"><span class="rn">2009</span><span class="rp" style="color:var(--green)">29,8 %</span></div><div class="rt"><div class="rf" style="width:30%;background:var(--green)"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">2015</span><span class="rp" style="color:var(--green)">34,1 %</span></div><div class="rt"><div class="rf" style="width:34%;background:var(--green)"></div></div></div>'+
+'<div class="r"><div class="r-top"><span class="rn">2022</span><span class="rp" style="color:var(--green)">45,7 %</span></div><div class="rt"><div class="rf" style="width:46%;background:var(--green)"></div></div></div>'+
+'<div class="r"><span class="rn" style="font-weight:700">2025</span><div class="rt"><div class="rf" style="width:56%;background:var(--green)"></div></div><span class="rp" style="color:var(--green);font-weight:700">55,5 %</span></div>'+
+'</div>'+
+'<div class="ins">Le prix est le premier frein au Québec (46 %). En France, <strong>90 % des porteurs reçoivent un remboursement</strong> d\'un tiers payeur et le taux d\'adoption a presque doublé en 16 ans. 63 % des Français appareillés pensent qu\'ils auraient dû s\'équiper plus tôt.</div>'
+}
+];
+
+function closeAll(){
+  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('on')});
+  document.querySelectorAll('.detail').forEach(function(p){p.classList.remove('open');p.innerHTML=''});
+}
+
+document.querySelectorAll('.step').forEach(function(step){
+  step.addEventListener('click',function(){
+    var i=parseInt(step.getAttribute('data-s'));
+    var d=DATA[i];
+    var det=document.getElementById('det-'+i);
+    var wasOpen=det.classList.contains('open');
+
+    closeAll();
+
+    if(wasOpen) return;
+
+    step.classList.add('on');
+    det.innerHTML=
+      '<div class="d-head">'+
+        '<div style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap">'+
+          '<span class="d-title">'+d.title+'</span>'+
+          '<span class="d-ecart" style="background:'+(d.neg?'rgba(192,57,43,.1)':'rgba(39,174,96,.12)')+';color:'+(d.neg?'var(--red)':'var(--green)')+'">'+d.ecart+'</span>'+
+        '</div>'+
+        '<button class="d-close" id="close-btn-'+i+'">✕</button>'+
+      '</div>'+
+      '<div class="d-body">'+d.html+'</div>';
+
+    det.offsetHeight;
+    det.classList.add('open');
+
+    document.getElementById('close-btn-'+i).addEventListener('click',function(e){
+      e.stopPropagation();
+      closeAll();
+    });
+  });
+});
+</script>
+</body>
+</html>
