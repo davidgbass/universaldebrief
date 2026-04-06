@@ -3,615 +3,430 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portrait de l'accessibilité — Santé auditive au Québec</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Universal Orlando — Guide terrain famille · Avril 2026</title>
 <style>
-:root{--navy:#0B2545;--teal:#13698B;--teal-light:#1B8AAF;--cream:#F8F5F0;--sand:#EDE8E0;--white:#FFFFFF;--orange:#E87B35;--red:#C0392B;--green:#27AE60;--green-light:#A8E6CF;--text:#1A1A2E;--text-muted:#5A6178;--border:#D5CFC5}
-*{margin:0;padding:0;box-sizing:border-box}
-html{font-size:17px}
-body{font-family:'Open Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Source+Serif+4:wght@300;400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Source Serif 4', Georgia, serif; background: #f7f4ef; color: #1a1714; line-height: 1.8; font-size: 16px; }
+  .page { max-width: 780px; margin: 0 auto; padding: 48px 32px 80px; }
 
-.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--teal) 60%,var(--teal-light) 100%);color:#fff;padding:3.5rem 2rem 3rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-40%;right:-20%;width:700px;height:700px;background:radial-gradient(circle,rgba(79,180,216,.15) 0%,transparent 70%);border-radius:50%}
-.hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
-.hero-logo{display:block;height:48px;width:auto;margin-bottom:1.5rem;filter:brightness(0) invert(1);opacity:.92}
-.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4.5vw,3rem);line-height:1.15;margin-bottom:.8rem;font-weight:400}
-.hero .sub{font-size:1rem;opacity:.85;max-width:640px;line-height:1.7}
-.hero-meta{margin-top:1.8rem;display:flex;gap:2rem;flex-wrap:wrap;font-size:.82rem;opacity:.65}
+  .header { border-bottom: 2px solid #1a1714; padding-bottom: 28px; margin-bottom: 40px; }
+  .kicker { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #8a7a65; margin-bottom: 12px; }
+  h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; line-height: 1.15; font-weight: 700; margin-bottom: 16px; }
+  .subtitle { font-size: 1rem; color: #5a4f42; font-weight: 300; font-style: italic; line-height: 1.6; }
+  .meta { margin-top: 16px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #8a7a65; }
 
-.main{max-width:940px;margin:0 auto;padding:2.5rem 2rem 5rem}
-.big-stat{text-align:center;margin:2.5rem 0 1.5rem}
-.big-stat .num{font-family:'DM Serif Display',serif;font-size:clamp(3.5rem,8vw,5.5rem);line-height:1}
-.big-stat .qc{color:var(--teal)}.big-stat .fr{color:var(--green)}.big-stat .sep{color:var(--border);font-weight:300;margin:0 .3em}
-.big-stat .label{font-size:1rem;color:var(--text-muted);margin-top:.5rem}
-.intro{text-align:center;max-width:640px;margin:0 auto 2.2rem;color:var(--text-muted);font-size:.95rem}
-.legend{display:flex;justify-content:center;gap:2.5rem;margin-bottom:1.8rem;font-size:.85rem;font-weight:600}
-.legend span{display:flex;align-items:center;gap:.5rem}
-.dot{width:14px;height:14px;border-radius:4px}
-.dot.qc{background:var(--teal)}.dot.fr{background:var(--green-light);border:2px solid var(--green)}
+  .intro-band { background: #1a1714; color: #f7f4ef; padding: 24px 28px; margin-bottom: 44px; }
+  .intro-band p { color: #d4c9b8; font-size: 0.95rem; line-height: 1.75; margin-bottom: 10px; }
+  .intro-band p:last-child { margin-bottom: 0; }
+  .intro-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #8a7a65; margin-bottom: 12px; display: block; }
 
-/* ═══ FUNNEL ═══ */
-.funnel{margin:0 0 .5rem}
-.step{
-  cursor:pointer;padding:12px 16px;border-radius:12px;margin-bottom:6px;
-  transition:background .2s,box-shadow .2s;border:2px solid transparent;
-}
-.step:hover{background:rgba(0,0,0,.02);border-color:var(--border)}
-.step.on{background:var(--white);border-color:var(--teal);box-shadow:0 4px 16px rgba(0,0,0,.06)}
-.step-top{display:flex;align-items:center;gap:12px}
-.step-label{width:140px;flex-shrink:0;font-size:.88rem;font-weight:600;color:var(--navy)}
-.step-chevron{
-  width:28px;height:28px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:50%;background:var(--sand);color:var(--teal);
-  font-size:.75rem;font-weight:700;transition:all .25s;
-  font-family:system-ui;
-}
-.step:hover .step-chevron{background:var(--teal);color:#fff}
-.step.on .step-chevron{background:var(--teal);color:#fff;transform:rotate(180deg)}
-.step-bars{flex:1;position:relative;height:44px;border-radius:8px;overflow:visible}
-.bar-fr{position:absolute;top:0;left:0;height:100%;border-radius:8px;background:var(--green-light);opacity:.45;transition:width .7s cubic-bezier(.25,.46,.45,.94)}
-.bar-qc{position:absolute;top:0;left:0;height:100%;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--teal-light));box-shadow:2px 0 12px rgba(19,105,139,.25);transition:width .7s cubic-bezier(.25,.46,.45,.94);z-index:2}
-.bar-gap{position:absolute;top:0;height:100%;border-radius:0 8px 8px 0;background:repeating-linear-gradient(-45deg,rgba(192,57,43,.06),rgba(192,57,43,.06) 4px,transparent 4px,transparent 10px);z-index:1;transition:left .7s,width .7s}
-.step-nums{width:130px;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;gap:0}
-.step-nums .n-qc{font-family:'JetBrains Mono',monospace;font-size:1.1rem;font-weight:700;color:var(--teal);line-height:1.2}
-.step-nums .n-fr{font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;color:var(--green);line-height:1.2;opacity:.7}
-.step-nums .n-gap{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:700;color:var(--red);line-height:1.2;background:rgba(192,57,43,.08);padding:1px 6px;border-radius:4px;margin-top:2px}
+  .section { margin-bottom: 48px; }
+  h2 { font-family: 'Playfair Display', serif; font-size: 1.45rem; font-weight: 700; margin-bottom: 6px; padding-bottom: 8px; border-bottom: 1px solid #d4c9b8; }
+  .section-number { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #8a7a65; display: block; margin-bottom: 4px; }
+  p { margin-bottom: 16px; color: #2a2420; }
+  p:last-child { margin-bottom: 0; }
 
-/* ── DETAIL ── */
-.detail{
-  background:var(--white);border:1px solid var(--border);border-radius:0 0 14px 14px;
-  overflow:hidden;max-height:0;opacity:0;
-  transition:max-height .45s ease,opacity .3s ease;
-  box-shadow:0 4px 20px rgba(0,0,0,.04);margin-top:-8px;margin-bottom:8px;border-top:none;
-}
-.detail.open{max-height:3000px;opacity:1}
-.d-head{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.6rem;border-bottom:1px solid var(--border);background:linear-gradient(135deg,#F0F5F8,var(--sand))}
-.d-title{font-weight:700;font-size:1rem;color:var(--navy)}
-.d-ecart{font-family:'JetBrains Mono',monospace;font-size:.8rem;font-weight:700;padding:.2rem .7rem;border-radius:6px;white-space:nowrap}
-.d-close{background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--text-muted);padding:.2rem .5rem;border-radius:6px;transition:background .2s;margin-left:.8rem}.d-close:hover{background:rgba(0,0,0,.06)}
-.d-body{padding:1.6rem}
-.d-body h4{font-size:.9rem;font-weight:700;color:var(--navy);margin:1.3rem 0 .5rem}.d-body h4:first-child{margin-top:0}
-.d-body .base{font-size:.72rem;color:var(--text-muted);font-style:italic;margin-bottom:.8rem}
+  .callout { background: white; border: 1px solid #d4c9b8; border-top: 3px solid #c9a84c; padding: 18px 22px; margin: 22px 0; }
+  .callout.blue { border-top-color: #2980b9; }
+  .callout.orange { border-top-color: #e67e22; }
+  .callout-title { font-family: 'Playfair Display', serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+  .callout p { font-size: 0.9rem; color: #3a302a; }
 
-.sr{display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
-.ms{flex:1;min-width:110px;background:var(--cream);border-radius:10px;padding:1rem;text-align:center;border:1px solid var(--border)}
-.ms .v{font-family:'DM Serif Display',serif;font-size:1.8rem;line-height:1.1}
-.ms .v.qc{color:var(--teal)}.ms .v.fr{color:var(--green)}.ms .v.delta{color:var(--red)}
-.ms .l{font-size:.72rem;color:var(--text-muted);margin-top:.2rem}
+  .ride-grid { display: grid; gap: 6px; margin: 16px 0; }
+  .ride-card { background: white; border-left: 3px solid #d4c9b8; overflow: hidden; }
+  .ride-card.gold { border-left-color: #c9a84c; }
+  .ride-card.green { border-left-color: #4a7c59; }
+  .ride-card.red { border-left-color: #c0392b; }
+  .ride-card.grey { border-left-color: #aaa; }
 
-.rl{display:flex;flex-direction:column;gap:.8rem}
-.r{display:flex;flex-direction:column;gap:.3rem;font-size:.86rem;color:var(--text)}
-.r-top{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem}
-.rn{flex:1}
-.rp{font-family:'JetBrains Mono',monospace;font-size:.88rem;font-weight:700;color:var(--orange);white-space:nowrap}
-.rt{width:100%;height:12px;background:rgba(0,0,0,.05);border-radius:6px;overflow:hidden}
-.rf{height:100%;border-radius:6px;background:var(--orange);transition:width .5s ease}
+  .ride-trigger { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; cursor: pointer; user-select: none; gap: 12px; transition: background 0.15s; }
+  .ride-trigger:hover { background: #faf8f4; }
+  .ride-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+  .ride-name { font-weight: 600; font-size: 0.88rem; color: #1a1714; }
+  .ride-tag { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.5px; white-space: nowrap; flex-shrink: 0; }
+  .tag-must { color: #4a7c59; }
+  .tag-good { color: #2980b9; }
+  .tag-skip { color: #c0392b; }
+  .tag-closed { color: #999; }
+  .ride-arrow { font-size: 0.7rem; color: #8a7a65; flex-shrink: 0; transition: transform 0.2s ease; }
+  .ride-card.open .ride-arrow { transform: rotate(90deg); }
+  .ride-body { display: none; padding: 0 16px 14px; border-top: 1px dashed #e8e0d4; }
+  .ride-card.open .ride-body { display: block; }
+  .ride-desc { font-size: 0.85rem; color: #3a302a; line-height: 1.65; margin-top: 10px; margin-bottom: 0; }
+  .ride-wait { font-size: 0.75rem; color: #8a7a65; margin-top: 8px; font-style: italic; }
 
-.ins{background:var(--cream);border-left:3px solid var(--teal);padding:.9rem 1.1rem;border-radius:0 8px 8px 0;font-size:.86rem;color:var(--text-muted);margin-top:1rem;line-height:1.65}
-.source{font-size:.72rem;color:var(--text-muted);font-style:italic;margin-top:2rem;padding-top:.8rem;border-top:1px solid var(--border)}
-.footer{background:var(--navy);color:rgba(255,255,255,.6);padding:2.5rem 2rem;text-align:center;font-size:.82rem}
-.footer strong{color:#fff}
-.footer-logo{display:block;height:32px;width:auto;margin:0 auto .8rem;filter:brightness(0) invert(1);opacity:.7}
+  .tip-list { list-style: none; margin: 16px 0; }
+  .tip-list li { padding: 10px 0 10px 22px; border-bottom: 1px dashed #d4c9b8; position: relative; font-size: 0.93rem; color: #2a2420; }
+  .tip-list li::before { content: '→'; position: absolute; left: 0; color: #c9a84c; font-weight: bold; }
+  .tip-list li strong { color: #1a1714; }
 
-/* ═══ ECONOMICS SECTION ═══ */
-.divider{height:1px;background:var(--border);margin:3rem 0}
-.section-tag{font-family:'JetBrains Mono',monospace;font-size:.85rem;font-weight:600;color:var(--teal);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;padding-bottom:.5rem;border-bottom:2px solid var(--teal);display:inline-block}
-.section-title{font-family:'DM Serif Display',serif;font-size:clamp(1.8rem,3.5vw,2.4rem);line-height:1.25;margin-bottom:1.5rem;margin-top:.5rem;color:var(--navy);font-weight:400}
-.econ-hero{display:flex;align-items:center;gap:2rem;background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:14px;padding:2.2rem;margin:1.5rem 0;color:#fff;flex-wrap:wrap}
-.econ-hero .econ-big{font-family:'DM Serif Display',serif;font-size:clamp(3rem,6vw,4.5rem);line-height:1;white-space:nowrap}
-.econ-hero .econ-txt{font-size:.95rem;opacity:.88;max-width:400px;line-height:1.6}
-.econ-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin:1.5rem 0}
-.econ-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center}
-.econ-card .ec-num{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--teal);line-height:1.1}
-.econ-card .ec-num.green{color:var(--green)}
-.econ-card .ec-num.red{color:var(--red)}
-.econ-card .ec-lbl{font-size:.82rem;color:var(--text-muted);margin-top:.4rem;line-height:1.4}
-.econ-table{width:100%;border-collapse:separate;border-spacing:0;margin:1.5rem 0;font-size:.9rem;border-radius:12px;overflow:hidden;border:1px solid var(--border)}
-.econ-table th{background:var(--navy);color:#fff;padding:.9rem 1.2rem;text-align:left;font-weight:600;font-size:.82rem}
-.econ-table td{padding:.8rem 1.2rem;background:var(--white);border-bottom:1px solid var(--border)}
-.econ-table tr:last-child td{border-bottom:none}
-.econ-table .highlight{background:rgba(19,105,139,.05);font-weight:600}
-.card{background:var(--white);border-radius:12px;padding:2rem;margin:1.5rem 0;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.03)}
-.card-accent{border-left:4px solid var(--teal)}
+  .verdict-row { display: flex; gap: 0; border: 1px solid #d4c9b8; margin: 20px 0; flex-wrap: wrap; }
+  .verdict-cell { flex: 1; min-width: 130px; padding: 14px 16px; border-right: 1px solid #d4c9b8; }
+  .verdict-cell:last-child { border-right: none; }
+  .verdict-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #8a7a65; margin-bottom: 4px; }
+  .verdict-value { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #1a1714; }
+  .stars { color: #c9a84c; }
 
-/* ═══ PARCOURS TIMELINE ═══ */
-.parcours{margin:1.5rem 0 0;position:relative;padding-left:0}
-.parc-step{
-  display:flex;gap:1rem;align-items:flex-start;
-  margin-bottom:.6rem;padding:1rem 1.2rem;
-  background:var(--white);border:1px solid var(--border);border-radius:10px;
-  transition:transform .15s;
-}
-.parc-step:hover{transform:translateX(4px)}
-.parc-num{
-  width:36px;height:36px;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:50%;
-  background:linear-gradient(135deg,var(--teal),var(--teal-light));
-  color:#fff;font-family:'JetBrains Mono',monospace;
-  font-size:.85rem;font-weight:700;
-}
-.parc-body{flex:1}
-.parc-title{font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:.2rem}
-.parc-desc{font-size:.84rem;color:var(--text-muted);line-height:1.6}
+  .badge { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin-left: 6px; vertical-align: middle; }
+  .badge.no-xp { background: #c0392b; color: white; }
+  .badge.xp { background: #2980b9; color: white; }
+  .hint { font-size: 0.85rem; color: #8a7a65; font-style: italic; margin-top: 16px; }
 
-@media(max-width:700px){
-  .hero{padding:2.5rem 1.5rem 2rem}.main{padding:1.5rem 1.2rem 4rem}
-  .step{padding:10px 10px}.step-label{width:80px;font-size:.76rem}
-  .step-bars{height:36px}.step-nums{width:88px}
-  .step-nums .n-qc{font-size:.88rem}.step-nums .n-fr{font-size:.65rem}
-  .step-chevron{width:24px;height:24px;font-size:.65rem}
-  .sr{flex-direction:column}
-}
+  .footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid #d4c9b8; font-size: 11px; color: #8a7a65; text-align: center; letter-spacing: 1px; text-transform: uppercase; }
 </style>
 </head>
 <body>
+<div class="page">
 
-<header class="hero">
-  <div class="hero-inner">
-    <img src="logo-OAQ.jpg" alt="Ordre des audioprothésistes du Québec" class="hero-logo">
-    <h1>Portrait de l'accessibilité</h1>
-    <p class="sub">Appareiller les Québécoises et les Québécois au bon moment pour maximiser les retombées — identifier les freins à l'accès sur tout le parcours vers la correction auditive.</p>
-    <div class="hero-meta">
-      <span>Rapport présenté au ministère de la Santé et des Services sociaux</span>
-      <span>26 mars 2026</span>
-    </div>
+  <div class="header">
+    <div class="kicker">Guide terrain · Famille avec enfants · Avril 2026</div>
+    <h1>Universal Orlando Resort :<br>Ce qu'on a vraiment vécu</h1>
+    <p class="subtitle">Retour d'expérience d'une famille québécoise de quatre — deux adultes, deux enfants de 7 et 9 ans. Deux journées de parcs, un hôtel sur le site, Express Pass Unlimited au Jour 1, aucun Express Pass au Jour 2. Ce guide documente ce qu'on a aimé, moins aimé, ce qu'on referait et ce qu'on ferait différemment.</p>
+    <div class="meta">IOA · USF · Epic Universe · Surfside Inn · Express Pass Unlimited (Jour 1 seulement)</div>
   </div>
-</header>
 
-<main class="main">
+  <div class="intro-band">
+    <span class="intro-label">Avant de commencer — ce que ce guide est vraiment</span>
+    <p>Ce n'est pas un guide théorique. C'est le compte-rendu de ce qu'une vraie famille a vécu, dans l'ordre, avec les vraies attentes, la vraie fatigue et les vraies surprises. Certaines choses qu'on avait planifiées ont fonctionné. D'autres pas. Ce guide est utile précisément parce qu'il ne cache rien.</p>
+    <p>Ce qui ressort par-dessus tout : Universal Orlando est une expérience nettement supérieure à Disney pour les familles qui cherchent l'immersion technologique. La bouffe est meilleure, les attractions sont plus récentes, et avec l'Express Pass la journée est transformée. Mais deux jours de parcs d'affilée avec des enfants sans jour de repos entre les deux, c'est trop — et Epic Universe sans Express Pass est une tout autre expérience que ce qu'on imaginait.</p>
+  </div>
 
-  <!-- PARCOURS COMPLET -->
-  <div class="section-tag" style="margin-top:1rem;">Le parcours vers la correction auditive</div>
-  <div class="section-title">Des freins à chaque étape — de la sensibilisation au suivi</div>
+  <div class="verdict-row">
+    <div class="verdict-cell"><div class="verdict-label">Note globale</div><div class="verdict-value stars">★★★★★</div></div>
+    <div class="verdict-cell"><div class="verdict-label">Attraction #1</div><div class="verdict-value">Hagrid's Motorbike</div></div>
+    <div class="verdict-cell"><div class="verdict-label">Surprise du séjour</div><div class="verdict-value">Bourne Stuntacular</div></div>
+    <div class="verdict-cell"><div class="verdict-label">Plus grand regret</div><div class="verdict-value">Flight of Hippogriff</div></div>
+    <div class="verdict-cell"><div class="verdict-label">Bouffe vs Disney</div><div class="verdict-value">Beaucoup meilleure</div></div>
+  </div>
 
-  <p>Le parcours vers la correction auditive comporte plusieurs étapes. À chacune, des freins font décrocher des Québécoises et des Québécois qui auraient bénéficié d'une intervention. L'enjeu pour le MSSS est d'agir sur l'ensemble de la chaîne pour maximiser les retombées de la correction auditive.</p>
 
-  <div class="parcours">
-    <div class="parc-step">
-      <div class="parc-num">1</div>
-      <div class="parc-body">
-        <div class="parc-title">Sensibilisation</div>
-        <div class="parc-desc">Faire connaître les conséquences de la perte auditive non traitée (démence, chutes, isolement). 75 % des malentendants québécois estiment qu'une perte légère ne justifie pas l'acquisition d'un appareil.</div>
-      </div>
-    </div>
-    <div class="parc-step">
-      <div class="parc-num">2</div>
-      <div class="parc-body">
-        <div class="parc-title">Déstigmatisation</div>
-        <div class="parc-desc">Combattre la perception que les appareils auditifs « font vieux » (42 %), sont inesthétiques (36 %) ou attirent le jugement social (25 %). La stigmatisation retarde la consultation de plusieurs années.</div>
-      </div>
-    </div>
-    <div class="parc-step">
-      <div class="parc-num">3</div>
-      <div class="parc-body">
-        <div class="parc-title">Dépistage et détection précoce</div>
-        <div class="parc-desc">37 % des malentendants québécois n'ont jamais consulté un professionnel, et plus du tiers de ceux qui consultent attendent plus d'un an avant de le faire. La détection précoce chez les personnes symptomatiques est un levier prioritaire, et le dépistage populationnel est un levier complémentaire à envisager.</div>
-      </div>
-    </div>
-    <div class="parc-step">
-      <div class="parc-num">4</div>
-      <div class="parc-body">
-        <div class="parc-title">Consultation d'un professionnel et recommandation</div>
-        <div class="parc-desc">Parmi ceux qui consultent, l'ORL (49 %) et l'audiologiste (47 %) sont les professionnels les plus sollicités. C'est à cette étape que l'écart avec la France est le plus marqué (−34 pts pour la recommandation). L'anticipation du coût pour le patient par le professionnel peut freiner la recommandation au Québec.</div>
-      </div>
-    </div>
-    <div class="parc-step">
-      <div class="parc-num">5</div>
-      <div class="parc-body">
-        <div class="parc-title">Appareillage</div>
-        <div class="parc-desc">Le prix est le premier frein à l'achat (46 %). L'absence d'assurance et le manque de ressources financières représentent 48 % des freins à la consultation. Les barrières financières sont le principal levier d'action pour les politiques publiques.</div>
-      </div>
-    </div>
-    <div class="parc-step">
-      <div class="parc-num">6</div>
-      <div class="parc-body">
-        <div class="parc-title">Suivi</div>
-        <div class="parc-desc">95 % des porteurs québécois font un suivi annuel chez l'audioprothésiste. 92 % estiment que l'achat en personne chez un professionnel a une valeur ajoutée. Le suivi est essentiel à l'efficacité à long terme de l'appareillage et à la réadaptation au monde sonore.</div>
-      </div>
+  <!-- SECTION 1 -->
+  <div class="section">
+    <span class="section-number">01 — Comprendre les deux parcs</span>
+    <h2>IOA + USF vs Epic Universe : deux réalités très différentes</h2>
+    <p>Universal Orlando se divise en deux expériences distinctes. D'un côté, Islands of Adventure (IOA) et Universal Studios Florida (USF) — les deux parcs historiques, reliés par le Hogwarts Express, avec une densité d'attractions élevée, plus d'ombre, et une logistique bien rodée. De l'autre, Epic Universe — le nouveau parc ouvert en 2025, visuellement et technologiquement à un autre niveau, mais plus grand, moins ombragé, et qui exige une stratégie différente.</p>
+    <p>La distinction la plus importante à comprendre avant de partir : <strong>l'Express Pass n'est pas accepté sur les attractions les plus populaires d'Epic Universe.</strong> Battle at the Ministry, Mine-Cart Madness et Dragon Racer's Rally ne l'acceptent pas. Cela change entièrement la logique de la journée.</p>
+    <div class="callout">
+      <div class="callout-title">Le Wizarding World s'étend sur trois parcs</div>
+      <p>Harry Potter occupe Hogsmeade à IOA, Diagon Alley à USF, et le Ministère de la Magie à Epic Universe. Le Hogwarts Express relie IOA à USF — dans les deux sens, avec une histoire différente à chaque traversée. Pour la première fois en 2026, un billet multi-jours permet de visiter les trois zones HP le même jour.</p>
     </div>
   </div>
 
-  <div class="card card-accent" style="margin-top:1.5rem;">
-    <p style="margin-bottom:0;"><strong>Constats pour le MSSS :</strong> Lorsque le parcours est complété, les résultats sont remarquables — 95 % de satisfaction, 85 % d'adaptation facile. Le problème n'est pas la qualité de la correction auditive, mais d'y accéder. Le parcours actuel perd les trois quarts de la population cible en cours de route, principalement pour des raisons de perception et de coût. Des interventions ciblées à chaque étape — de la sensibilisation au suivi — permettraient d'augmenter significativement le taux d'appareillage des Québécoises et des Québécois et de profiter pleinement des retombées positives de la correction auditive.</p>
-  </div>
 
-  <div class="divider"></div>
+  <!-- SECTION 2 -->
+  <div class="section">
+    <span class="section-number">02 — Jour 1 · IOA + USF</span>
+    <h2>Islands of Adventure & Universal Studios Florida <span class="badge xp">Express Pass Unlimited</span></h2>
+    <p>La journée la plus réussie du séjour. Avec l'Express Pass, les files oscillaient entre 5 et 25 minutes sur presque toutes les attractions, même quand les files standard affichaient deux heures. On a démarré par l'Early Entry à 8h pour Hagrid's — moins de 20 minutes d'attente. Mais on le précise : avec l'Express, même en journée les attentes restaient autour de 25 minutes. L'Early Entry agressif à 7h30 n'est pas indispensable si vous êtes armés de l'Express — surtout quand ça implique de réveiller des enfants à 6h du matin.</p>
+    <p class="hint">Cliquez sur une attraction pour voir les détails.</p>
 
-  <!-- FREINS COMPARÉS -->
-  <div class="section-tag">Freins à l'accès — Québec vs France</div>
-  <div class="section-title">L'entonnoir qui fuit : où perd-on les Québécoises et les Québécois ?</div>
+    <div class="ride-grid">
 
-  <div class="big-stat">
-    <div class="num"><span class="qc">25 %</span><span class="sep">vs</span><span class="fr">55 %</span></div>
-    <div class="label">des malentendants possèdent des prothèses auditives</div>
-  </div>
-
-  <p class="intro">Les données du Portrait Ad hoc (2022) et d'EuroTrak France (2025) permettent de quantifier les pertes à quatre étapes clés du parcours. Cliquez sur une étape pour voir les <strong>freins identifiés et les données comparatives</strong>.</p>
-
-  <div class="legend">
-    <span><span class="dot qc"></span> Québec</span>
-    <span><span class="dot fr"></span> France (référence)</span>
-  </div>
-
-  <div class="funnel">
-
-    <div class="step" data-s="0">
-      <div class="step-top">
-        <div class="step-label">Malentendants auto-déclarés</div>
-        <div class="step-bars">
-          <div class="bar-fr" style="width:100%"></div>
-          <div class="bar-qc" style="width:100%"></div>
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Hagrid's Magical Creatures Motorbike Adventure</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
         </div>
-        <div class="step-nums">
-          <span class="n-qc">100 %</span>
-          <span class="n-fr">100 % FR</span>
+        <div class="ride-body">
+          <p class="ride-desc">L'attraction préférée du séjour — consensus familial, sans discussion. Les sièges sont en paire : une personne sur la moto, une dans le sidecar. La Forêt Interdite dans le noir avec des créatures animatroniques est une expérience à part entière. On l'a refaite le soir après la parade — encore meilleure dans l'obscurité. Si vous n'en faites qu'une seule : c'est celle-là.</p>
+          <p class="ride-wait">Early Entry : &lt;20 min — File standard en journée : 143–170 min</p>
         </div>
-        <div class="step-chevron">▼</div>
       </div>
-    </div>
-    <div class="detail" id="det-0"></div>
 
-    <div class="step" data-s="1">
-      <div class="step-top">
-        <div class="step-label">Consultation professionnelle</div>
-        <div class="step-bars">
-          <div class="bar-fr" style="width:82%"></div>
-          <div class="bar-gap" style="left:63%;width:19%"></div>
-          <div class="bar-qc" style="width:63%"></div>
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Hogwarts Express</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
         </div>
-        <div class="step-nums">
-          <span class="n-qc">63 %</span>
-          <span class="n-fr">82 % FR</span>
-          <span class="n-gap">−19 pts</span>
+        <div class="ride-body">
+          <p class="ride-desc">Ce n'est pas un transport — c'est une attraction narrative complète. L'histoire est différente selon le sens : IOA → USF (fuite de Poudlard, Détraqueurs) vs USF → IOA (retour à l'école, créatures qui s'échappent). À faire dans les deux directions si possible. Éviter la traversée entre 10h et 13h — les files atteignent 110 à 134 minutes dans cette fenêtre.</p>
+          <p class="ride-wait">Express recommandé en journée</p>
         </div>
-        <div class="step-chevron">▼</div>
       </div>
-    </div>
-    <div class="detail" id="det-1"></div>
 
-    <div class="step" data-s="2">
-      <div class="step-top">
-        <div class="step-label">Recommandation de prothèse</div>
-        <div class="step-bars">
-          <div class="bar-fr" style="width:67%"></div>
-          <div class="bar-gap" style="left:33%;width:34%"></div>
-          <div class="bar-qc" style="width:33%"></div>
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Escape from Gringotts</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
         </div>
-        <div class="step-nums">
-          <span class="n-qc">33 %</span>
-          <span class="n-fr">67 % FR</span>
-          <span class="n-gap">−34 pts</span>
+        <div class="ride-body">
+          <p class="ride-desc">Dark ride hybride dans Diagon Alley — gondole dans les souterrains de la banque, coaster doux, écrans 3D, sets physiques gigantesques, dragon qui crache du feu réel. La file traverse le hall de marbre de Gringotts — déjà une attraction en soi. Bien toléré par les enfants, zéro inversion.</p>
+          <p class="ride-wait">Express — ~15 min</p>
         </div>
-        <div class="step-chevron">▼</div>
       </div>
-    </div>
-    <div class="detail" id="det-2"></div>
 
-    <div class="step" data-s="3">
-      <div class="step-top">
-        <div class="step-label">Possède des prothèses</div>
-        <div class="step-bars">
-          <div class="bar-fr" style="width:55%"></div>
-          <div class="bar-gap" style="left:25%;width:30%"></div>
-          <div class="bar-qc" style="width:25%"></div>
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Bourne Stuntacular</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
         </div>
-        <div class="step-nums">
-          <span class="n-qc">25 %</span>
-          <span class="n-fr">55 % FR</span>
-          <span class="n-gap">−30 pts</span>
+        <div class="ride-body">
+          <p class="ride-desc">La grande surprise du séjour. Ce n'est pas un ride — c'est un show de cascades live de 20 minutes devant un écran LED de 130 pieds. Stuntmen réels, voitures sur scène, la fusion entre le décor physique et l'écran est indiscernable. Climatisé, assis, aucun mouvement. File quasi-nulle. Aucun équivalent ailleurs.</p>
+          <p class="ride-wait">Aucune file — plusieurs représentations par jour</p>
         </div>
-        <div class="step-chevron">▼</div>
       </div>
+
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Revenge of the Mummy</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Coaster indoor dans le noir total — décors égyptiens, début lent et narratif, puis accélération brutale, fausse fin, et launch surprise à reculons. Zéro inversion. Surprend même ceux qui pensaient savoir à quoi s'attendre. Un classique qui tient encore très bien la route.</p>
+          <p class="ride-wait">Express — ~15 min</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Transformers: The Ride-3D</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">RECOMMANDÉ</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Dark ride simulateur avec 13 écrans HD, effets 4D (eau, chaleur, vent), véhicule qui se propulse dans tous les sens. Autobots vs Decepticons. Technologie récente, bien calibrée pour les enfants qui aiment l'action. Plus intense et plus récent que Spider-Man.</p>
+          <p class="ride-wait">Express — ~15 min</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Harry Potter & the Forbidden Journey</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">RECOMMANDÉ</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Bras robotique KUKA multi-axes — vous survolez Poudlard avec Harry, Détraqueurs, Araignées géantes, match de Quidditch. Technologiquement impressionnant, mais unanimement classé comme le ride le plus susceptible de causer le mal de cœur au resort. Le conflit visuel entre le mouvement du bras et l'immobilité du corps est intense. À évaluer selon la tolérance individuelle.</p>
+          <p class="ride-wait">Express — ~15 min</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">The Simpsons Ride</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">RECOMMANDÉ</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Simulateur dôme wraparound avec les Simpsons dans un parc fictif de Springfield. Même famille technologique que Forbidden Journey mais nettement moins intense. Si vous avez bien toléré Forbidden Journey, celui-ci ne posera aucun problème. Certains membres de la famille ont préféré attendre à l'extérieur.</p>
+          <p class="ride-wait">Express — files modérées</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Race Through New York — Jimmy Fallon</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">SI TEMPS LIBRE</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Simulateur dans le décor de l'émission. Correct, file généralement courte. Conseil pratique : éviter la première rangée — la barrière devant réduit le champ de vision sur l'écran et diminue l'expérience.</p>
+          <p class="ride-wait">File généralement faible</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Spider-Man</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">SI TEMPS LIBRE</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Pionnier du genre en 1999 — décors physiques combinés à des écrans 3D. Toujours efficace malgré l'âge. Moins intense et moins récent que Transformers. Si les files Express sont courtes, ça vaut le détour. Pas une priorité sans Express.</p>
+          <p class="ride-wait">Express — files modérées</p>
+        </div>
+      </div>
+
+      <div class="ride-card red" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Flight of the Hippogriff</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-skip">À ÉVITER sans Express</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Le plus grand regret du séjour. 45 minutes d'attente pour un coaster de 60 secondes. Le ratio attente/expérience le plus défavorable du parc. Avec l'Express : 5 minutes, acceptable. Sans Express : passez votre tour et gardez ce temps pour Hagrid's ou Gringotts.</p>
+          <p class="ride-wait">45 min sans Express — expérience trop courte pour justifier l'attente</p>
+        </div>
+      </div>
+
+      <div class="ride-card grey" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Rides mouillants — Jurassic Park · Popeye Bilge-Rat Barges</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-closed">VÉRIFIER DISPO</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Les deux rides mouillants d'IOA. Vérifier dans l'app avant votre visite — Jurassic Park était fermé pour maintenance longue durée en 2026. Si disponibles : à faire en fin de journée seulement, en maillot ou avec poncho. Vous finissez complètement trempés.</p>
+          <p class="ride-wait">—</p>
+        </div>
+      </div>
+
     </div>
-    <div class="detail" id="det-3"></div>
 
-  </div>
-
-  <p class="source">Ad hoc recherche, « Portrait des personnes malentendantes au Québec », août 2022 (n = 500, Québécois malentendants de 40 ans et plus, base autodéclarée, QA–QF). Anovum, EuroTrak FRA 2025 (n = 14 939 ; n = 1 304 malentendants ; n = 705 porteurs). Johnson & Bisgaard (2024), International Journal of Audiology.</p>
-
-  <div class="divider"></div>
-
-  <!-- SECTION : RETOMBÉES ÉCONOMIQUES -->
-  <div class="section-tag">Retombées économiques</div>
-  <div class="section-title">L'inaction coûte plus cher que l'action</div>
-
-  <p>L'étude avantages-coûts réalisée par la firme AppEco en février 2025, commandée par l'OAQ, modélise l'impact d'une augmentation du taux d'adoption des prothèses auditives au Québec. Le modèle théorique fait passer le taux d'adoption de <strong>32 % à 46 %</strong> — soit une augmentation de 14 points de pourcentage, alignée sur le modèle français. Les résultats démontrent un retour largement supérieur à l'investissement, dans tous les scénarios analysés.</p>
-
-  <div class="econ-hero">
-    <div class="econ-big">8,90 $</div>
-    <div class="econ-txt">de retour pour chaque dollar investi par le gouvernement sur 5 ans<br><strong>Scénario Progrès</strong> (modèle français appliqué au Québec)</div>
-  </div>
-
-  <div class="econ-grid">
-    <div class="econ-card">
-      <div class="ec-num">133 M$</div>
-      <div class="ec-lbl">Investissement additionnel du gouvernement sur 5 ans</div>
-    </div>
-    <div class="econ-card">
-      <div class="ec-num green">1,2 G$</div>
-      <div class="ec-lbl">Retour pour le gouvernement sur 5 ans</div>
-    </div>
-    <div class="econ-card">
-      <div class="ec-num green">5,3 G$</div>
-      <div class="ec-lbl">Économies nettes pour le gouvernement sur 20 ans</div>
-    </div>
-    <div class="econ-card">
-      <div class="ec-num">5,1</div>
-      <div class="ec-lbl">Ratio minimum en analyse de sensibilité (pire scénario)</div>
-    </div>
-  </div>
-
-  <table class="econ-table">
-    <thead>
-      <tr><th></th><th>Scénario Progrès (5 ans)</th><th>Scénario Progrès (20 ans)</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Ratio AAC — gouvernement</td><td class="highlight">8,9</td><td class="highlight">10,1</td></tr>
-      <tr><td>Ratio AAC — société</td><td>7,1</td><td>7,6</td></tr>
-      <tr><td>Investissement additionnel gouv.</td><td>133 M $</td><td>—</td></tr>
-      <tr><td>Retour pour le gouvernement</td><td>1,2 G $</td><td>5,3 G $ (net)</td></tr>
-      <tr><td>Taux d'adoption visé</td><td colspan="2">46 % (modèle français), 1,76 prothèse par personne</td></tr>
-    </tbody>
-  </table>
-
-  <div class="card card-accent">
-    <h4 style="margin-top:0;font-size:.95rem;color:var(--navy);">Ce que la science dit clairement</h4>
-    <p style="margin-bottom:0;">La perte auditive non traitée est le <strong>premier facteur de risque modifiable de la démence</strong> (Commission Lancet, 2024). Les prothèses auditives sont associées à une réduction de <strong>30 % de l'incidence de démence</strong> chez les personnes à risque, de <strong>50 % des chutes</strong>, et compensent entre <strong>65 % et 95 % de la perte salariale</strong> liée à la perte auditive. L'étude exclut les bénéfices sur la santé mentale et la qualité de vie — les chiffres sont donc conservateurs.</p>
-  </div>
-
-  <p class="source">Gougeon, P., Denis, J.-C. et Zaki, O. (2025). Analyse avantages-coûts d'une bonification du programme de prothèses auditives au Québec. AppEco Analyse stratégique, rapport remis à l'OAQ, 17 février 2025. Commission Lancet on Dementia (2024), Lancet, 404(10452).</p>
-
-  <div class="divider"></div>
-
-  <!-- SECTION : PROTHÈSES EN VENTE LIBRE -->
-  <div class="section-tag">Prothèses auditives en vente libre</div>
-  <div class="section-title">Position de l'Ordre</div>
-
-  <div class="econ-hero" style="background:linear-gradient(135deg,#3A3A5C,var(--navy));">
-    <div class="econ-txt" style="max-width:100%;opacity:1;font-size:1.05rem;">
-      « Nous sommes disposés à réfléchir avec le législateur pour bâtir un cadre qui concilie accessibilité et sécurité en respect de notre mission de protection du public. »
-      <br><span style="opacity:.65;font-size:.85rem;">— David Gélinas, président de l'OAQ</span>
-    </div>
-  </div>
-
-  <p>L'OAQ est <strong>favorable</strong> à l'arrivée des prothèses auditives en vente libre au Québec, <strong>à condition que les critères techniques exigés par Santé Canada soient suffisants</strong> pour assurer la protection des consommateurs, comme l'a fait la FDA aux États-Unis. Toutefois, l'Ordre ne les considère pas comme une solution qui augmenterait significativement l'accessibilité à une correction auditive de qualité.</p>
-
-  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Prothèse de prescription vs. en vente libre</h4>
-
-  <table class="econ-table">
-    <thead>
-      <tr><th>Prothèse de prescription</th><th>Prothèse en vente libre (OTC)</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Acquise suite à la consultation d'un médecin ou d'un audiologiste (certificat requis)</td><td>Conçue pour être acquise sans consultation — auto-diagnostic, auto-évaluation, auto-ajustement</td></tr>
-      <tr><td>Fournie par l'audioprothésiste avec un suivi adapté</td><td>Acquise dans tout commerce (électronique, grande surface, pharmacie)</td></tr>
-      <tr><td>Ajustée selon la perte auditive par des mesures objectives in vivo</td><td>Auto-ajustée par l'utilisateur</td></tr>
-      <tr><td>Toutes pertes auditives (légères à profondes)</td><td>Pertes légères à modérées (perçues)</td></tr>
-      <tr><td>Encadrée par la Loi, les règlements et le Code de déontologie</td><td>Encadrement variable selon les juridictions</td></tr>
-    </tbody>
-  </table>
-
-  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Le vide réglementaire canadien</h4>
-
-  <table class="econ-table">
-    <thead>
-      <tr><th style="background:var(--green);">✓ FDA américaine (2022)</th><th style="background:var(--red);">✗ Santé Canada</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Adultes 18 ans + avec perte légère à modérée perçue<br>Volume max : 111 dB SPL (117 avec compression)<br>Embout ≥ 10 mm du tympan<br>Mention « OTC Hearing Aid » obligatoire<br>8 drapeaux rouges obligatoires<br>Contrôle de volume ajustable obligatoire</td>
-        <td>Aucune sous-catégorie OTC créée<br>Aucune limite de puissance maximale<br>Aucun étiquetage spécifique OTC<br>Efficacité repose sur la déclaration du fabricant<br>Détaillants exemptés de licence (art. 44)<br>Publicité non encadrée après homologation</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="card card-accent" style="margin-top:1.5rem;">
-    <p style="margin-bottom:.5rem;font-style:italic;">« The provinces and territories decide how licensed medical devices are accessed in their jurisdictions, including whether a prescription is required for such devices. »</p>
-    <p style="margin-bottom:0;font-size:.85rem;color:var(--text-muted);">— Greg Orencsak, sous-ministre de la Santé, Santé Canada, 16 mai 2025</p>
-  </div>
-
-  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Bilan après trois ans aux États-Unis (2022–2025)</h4>
-
-  <div class="econ-grid">
-    <div class="econ-card">
-      <div class="ec-num red">5,7 %</div>
-      <div class="ec-lbl">des porteurs utilisent un OTC aux É.-U. en 2025</div>
-    </div>
-    <div class="econ-card">
-      <div class="ec-num">67 %</div>
-      <div class="ec-lbl">des acheteurs OTC achètent en ligne ou en pharmacie</div>
-    </div>
-    <div class="econ-card">
-      <div class="ec-num red">81 %</div>
-      <div class="ec-lbl">des professionnels préoccupés par le service après-vente</div>
+    <div class="callout blue" style="margin-top: 24px;">
+      <div class="callout-title">La bouffe — vraiment meilleure qu'à Disney</div>
+      <p>Les restaurants thématiques sont nettement supérieurs à ce qu'on trouve habituellement dans un parc d'attractions. Three Broomsticks (Hogsmeade), The Leaky Cauldron (Diagon Alley), Mel's Drive-In (Hollywood) pour la rapidité avec mobile order. Finnegan's Bar &amp; Grill était fermé pour rénovations en avril 2026 — vérifier avant de le planifier. Butterbeer standard : décevant. La version Crème Brûlée à Epic (Café L'air de la Sirène) est supérieure.</p>
     </div>
   </div>
 
-  <h4 style="font-size:.95rem;font-weight:700;color:var(--navy);margin:2rem 0 .8rem;">Risques identifiés</h4>
 
-  <div class="rl" style="gap:1rem;">
-    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
-      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Masquage de conditions médicales</span></div>
-      <span style="font-size:.84rem;color:var(--text-muted);">Une perte auditive peut signaler une pathologie traitable : tumeur, otosclérose, maladie de Ménière. Sans évaluation préalable, l'amplification non nécessaire ou un retard de diagnostic peut en résulter.</span>
+  <!-- SECTION 3 -->
+  <div class="section">
+    <span class="section-number">03 — Jour 2 · Epic Universe</span>
+    <h2>Epic Universe <span class="badge no-xp">Sans Express Pass</span></h2>
+    <p>Epic Universe est une réalisation remarquable. Cinq mondes entièrement isolés — vous franchissez un portail et changez d'univers, sans jamais voir l'extérieur. La qualité d'immersion, les décors, la technologie : tout est au-dessus de ce qui existe ailleurs à Orlando.</p>
+    <p>Mais sans Express Pass, c'est une expérience fondamentalement différente. Les files des attractions les plus populaires atteignent 90 à 180 minutes en journée. Battle at the Ministry et Wing Gliders n'acceptent pas l'Express même si vous l'avez acheté. Le seul moment où ces files sont gérables, c'est l'Early Entry dès 8h.</p>
+    <p>À cela s'ajoute une réalité physique qu'on sous-estime toujours : <strong>Epic Universe est grand et il fait chaud.</strong> Le hub central et les zones de transition entre les portails sont exposés en plein soleil, sans ombre. En avril à Orlando, ça tape fort. Traverser le parc pour une file qui vient de baisser peut prendre 10 minutes de marche. En début de journée, c'est rien. À 14h avec des douleurs aux pieds et la chaleur — c'est un frein réel.</p>
+
+    <div class="callout orange">
+      <div class="callout-title">La charge mentale — un facteur sous-estimé</div>
+      <p>Sans Express, gérer une journée à Epic implique de surveiller constamment l'app, comparer les files, décider si un trajet de 10 minutes vaut le gain. Sur une journée entière, sous la chaleur, avec des enfants qui fatiguent — c'est épuisant mentalement en plus de l'être physiquement.</p>
     </div>
-    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
-      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Dommages auditifs permanents</span></div>
-      <span style="font-size:.84rem;color:var(--text-muted);">L'absence de limites d'amplification au Canada pourrait aggraver irréversiblement la perte auditive ou provoquer des acouphènes. Contrairement à la FDA, Santé Canada n'impose aucune puissance maximale propre aux appareils en vente libre.</span>
-    </div>
-    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
-      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Absence de service et de suivi</span></div>
-      <span style="font-size:.84rem;color:var(--text-muted);">Des appareils potentiellement dangereux et inefficaces côtoient des produits sécuritaires et prometteurs, et le consommateur n'a aucun moyen de les distinguer. Le suivi professionnel, essentiel à l'efficacité de l'appareillage, serait absent avec les appareils en vente libre.</span>
-    </div>
-    <div class="r" style="flex-direction:column;gap:.2rem;padding:1rem;background:var(--white);border-radius:10px;border:1px solid var(--border);">
-      <div class="r-top"><span class="rn" style="font-weight:700;">⚠️ Population vulnérable et désinformation</span></div>
-      <span style="font-size:.84rem;color:var(--text-muted);">La clientèle âgée est particulièrement exposée aux dérives commerciales. La publicité représente environ 40 % des infractions disciplinaires à l'OAQ (130+ infractions depuis 1990).</span>
+
+    <p class="hint">Cliquez sur une attraction pour voir les détails.</p>
+
+    <div class="ride-grid">
+
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Monsters Unchained: The Frankenstein Experiment</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">L'attraction qui a le plus impressionné à Epic — refaite deux fois par certains membres de la famille. Véhicules KUKA autonomes à travers le manoir de Frankenstein, 14 animatroniques parmi les plus avancés au monde, zéro écran, zéro inversion. Le niveau de détail est hors du commun. Note : le décor gothique et l'atmosphère d'horreur ont fait peur à notre enfant de 9 ans — à évaluer selon la sensibilité.</p>
+          <p class="ride-wait">Files modérées si fait tôt en journée</p>
+        </div>
+      </div>
+
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Harry Potter & the Battle at the Ministry</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Le clou du séjour sur le plan technologique. Ascenseurs omnidirectionnels, animatroniques indiscernables d'acteurs réels, environnements physiques à l'échelle d'un entrepôt. Zéro inversion, accessible aux enfants. La file d'attente elle-même est une attraction — les décors du Ministère valent le déplacement. On a attendu environ une heure sans Express — après une matinée avec Express la veille, le contraste se fait sentir.</p>
+          <p class="ride-wait">Early Entry : 10–30 min — Sans Express en journée : 90–180 min</p>
+        </div>
+      </div>
+
+      <div class="ride-card gold" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Café L'air de la Sirène</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-must">INCONTOURNABLE</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Le meilleur repas du séjour. Restaurant dans le monde du Ministère de la Magie, décor Paris années 1920. Quiche Lorraine, Baguette de Dinde, Salade Niçoise — vraie cuisine française, pas une version édulcorée pour touristes. Supérieur à ce qu'on trouve habituellement en parc.</p>
+          <p class="ride-wait">—</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Mario Kart: Bowser's Challenge</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">RECOMMANDÉ</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">La file d'attente immersive dans Mushroom Kingdom est spectaculaire — activités interactives partout, décors grandeur nature. Le ride avec les lunettes AR est technologiquement impressionnant, mais l'expérience de jeu est en-dessous des attentes créées par la file. À faire — mais pas au prix de 2h30 d'attente sans Express.</p>
+          <p class="ride-wait">Sans Express en journée : 90–170 min</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Stardust Racers</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">RECOMMANDÉ</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Deux trains lancés simultanément à 100 km/h — l'effet de compétition est unique. Zéro inversion. Mieux en soirée quand les lumières du parc créent un effet de comètes. Détecteur de métal à l'entrée — retirer les Power-Up Bands avant d'embarquer. L'effet de vitesse et les descentes abruptes peuvent surprendre.</p>
+          <p class="ride-wait">Files courtes en soirée</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Fyre Drill</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">EN MAILLOT SEULEMENT</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Bateau avec canons à eau — vous finissez vraiment trempés, pas juste mouillés. À faire absolument en maillot de bain ou avec un poncho. Passer le reste de la journée mouillés sous la chaleur d'Epic est une mauvaise idée — à planifier en toute fin de journée.</p>
+          <p class="ride-wait">Files généralement courtes</p>
+        </div>
+      </div>
+
+      <div class="ride-card green" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Power-Up Bands Nintendo</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-good">SI VOUS AVEZ DU TEMPS</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Bracelets permettant de participer à des défis AR dans Nintendo World. Concept sympa, mais chronophage : compléter l'ensemble des défis prend 45 minutes minimum. Sans Express, difficile à justifier si vous n'avez pas fait toutes les attractions prioritaires.</p>
+          <p class="ride-wait">—</p>
+        </div>
+      </div>
+
+      <div class="ride-card red" onclick="toggleRide(this)">
+        <div class="ride-trigger">
+          <div class="ride-left"><div class="ride-name">Mine-Cart Madness (Donkey Kong)</div></div>
+          <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;"><span class="ride-tag tag-skip">BESOIN DE L'EXPRESS</span><span class="ride-arrow">▶</span></div>
+        </div>
+        <div class="ride-body">
+          <p class="ride-desc">Coaster Donkey Kong avec un effet de saut mécanique sur des rails brisés — technologie unique introuvable ailleurs. On ne l'a pas fait : la file dépassait 120 minutes en journée et l'énergie n'était plus là en soirée. Principal regret d'Epic — sans Express, très difficile d'y accéder sans y sacrifier une heure et demie.</p>
+          <p class="ride-wait">Sans Express en journée : 120–175 min</p>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <div class="ins" style="margin-top:1.5rem;">
-    <strong>L'INESSS</strong> constate que les appareils en vente libre améliorent les habiletés auditives des pertes légères à modérées, mais que la qualité et les modalités d'ajustement sont variables. <strong>L'INESSS n'émet pas de recommandation quant à l'utilisation de ces appareils.</strong>
-    <br><span style="font-size:.75rem;color:var(--text-muted);">INESSS, juillet 2023.</span>
+
+  <!-- SECTION 4 -->
+  <div class="section">
+    <span class="section-number">04 — Ce qu'aucun guide ne calcule</span>
+    <h2>La marche, la chaleur et la fatigue : les vrais adversaires</h2>
+    <p>Toute logique d'optimisation repose sur une hypothèse silencieuse : que vous avez la même énergie à 15h qu'à 9h. C'est rarement vrai avec des enfants. Et à Epic Universe, c'est particulièrement faux.</p>
+    <p>Epic est grand. Passer d'un monde à un autre prend facilement 8 à 12 minutes de marche en plein soleil. Le hub central (Celestial Park) est entièrement exposé — pas d'arbre, pas de couvert. Plusieurs files d'attractions majeures sont partiellement extérieures. En avril à Orlando, la température dépasse régulièrement 30°C.</p>
+    <p>En début de journée, 10 minutes de marche, c'est rien. En après-midi, quand les pieds font mal, que les jambes sont lourdes, que les enfants traînent — ces mêmes 10 minutes deviennent une vraie barrière. On arrive à un point où même si l'app indique 15 minutes d'attente de l'autre côté du parc, la réponse honnête est qu'on n'a plus l'énergie d'y aller. C'est parfaitement normal — mais aucun outil de planification ne le modélise.</p>
+    <div class="callout orange">
+      <div class="callout-title">Stratégie concrète : planifier par zone, pas par file</div>
+      <p>Finissez tout ce qui est disponible dans un monde avant de passer au suivant — même si une attraction ailleurs affiche une file plus courte. Vous perdrez peut-être quelques minutes sur le papier, mais vous gagnerez en énergie et en cohérence. Intégrez des pauses climatisées délibérément : un repas assis, un show intérieur. À Epic, il n'y a pas de pauses naturelles à l'ombre — vous devez les créer.</p>
+    </div>
   </div>
 
-  <p class="source">Dobyan & Kihm (2025), MarkeTrak 2025, Seminars in Hearing, 46(03). 21 C.F.R. § 800.30 (FDA). Règlement sur les instruments médicaux, DORS/98-282 (Canada). Lettre de Santé Canada, 16 mai 2025. INESSS, Pratiques pertinentes pour favoriser la santé auditive en milieu d'hébergement de longue durée, juillet 2023. Ad hoc recherche, 2022.</p>
-</main>
 
-<footer class="footer">
-  <img src="logo-OAQ.jpg" alt="OAQ" class="footer-logo">
-  <p><strong>Ordre des audioprothésistes du Québec</strong></p>
-  <p>Rapport présenté au ministère de la Santé et des Services sociaux — 26 mars 2026</p>
-</footer>
+  <!-- SECTION 5 -->
+  <div class="section">
+    <span class="section-number">05 — Les décisions qui font la différence</span>
+    <h2>Ce qu'on referait, ce qu'on ferait autrement</h2>
+    <ul class="tip-list">
+      <li><strong>Express Pass — la décision la plus importante du séjour.</strong> Pas l'hôtel, pas les restaurants, pas l'ordre des attractions. L'Express. La différence entre 25 minutes et 2 heures d'attente sur Transformers en journée. À prendre pour IOA+USF. À prendre aussi pour Epic si vous y retournez.</li>
+      <li><strong>Avec l'Express, l'Early Entry n'est pas indispensable.</strong> Même avec 170 minutes en file standard, l'Express donnait 25 minutes. Se lever à 6h pour courir au rope drop avec des enfants est violent — pas toujours nécessaire si le parc n'est pas en période de pointe extrême. L'Early Entry devient critique uniquement pour les rides sans Express à Epic.</li>
+      <li><strong>Une journée de pause entre IOA/USF et Epic Universe.</strong> Deux jours de parc intensif d'affilée avec des enfants, c'est trop. Mal aux pieds, mal aux jambes, chaleur accumulée — tout ça pèse lourdement sur la qualité de l'expérience à Epic.</li>
+      <li><strong>Express Pass pour Epic aussi.</strong> Sans lui, la charge mentale de gérer les files, les trajets et la chaleur familiale est réellement épuisante. L'optimisation sur papier ne tient pas compte de ça.</li>
+      <li><strong>Planifier par zone géographique, pas par file d'attente.</strong> Finir un monde avant d'en entrer un autre. Éviter de traverser Epic en plein après-midi pour une file qui vient de baisser.</li>
+      <li><strong>Fyre Drill en maillot, en toute fin de journée.</strong> Pas en début d'après-midi avec encore des heures de parc devant soi.</li>
+      <li><strong>Éviter Flight of the Hippogriff sans Express.</strong> 45 minutes pour 60 secondes de coaster — le pire ratio du resort.</li>
+      <li><strong>Hagrid's de nuit après la parade.</strong> La première fois le matin est déjà excellente. La deuxième fois dans l'obscurité de la Forêt Interdite — c'est le moment dont tout le monde se souvient.</li>
+      <li><strong>Vérifier les tailles dans l'app Universal, pas sur Internet.</strong> Hagrid's exige 48 pouces — pas 54 comme souvent cité en ligne. Des informations incorrectes peuvent changer toute la planification familiale.</li>
+      <li><strong>Surfside Inn : l'hôtel idéal pour ce type de séjour.</strong> Navette gratuite fiable, Early Entry inclus, piscine de qualité pour récupérer entre les deux journées.</li>
+    </ul>
+  </div>
+
+
+  <!-- SECTION 6 -->
+  <div class="section">
+    <span class="section-number">06 — Verdict</span>
+    <h2>Feriez-vous ça à nouveau ?</h2>
+    <p>Oui — sans hésitation, mais avec trois ajustements clairs. Universal Orlando est supérieur à Disney pour les familles qui cherchent l'immersion technologique et narrative. Les attractions sont plus récentes, la bouffe est meilleure, et l'Express Pass transforme radicalement la journée.</p>
+    <p><strong>Ajustement 1 :</strong> Express Pass pour les deux journées, Epic inclus. La différence d'expérience avec et sans est trop grande pour l'ignorer.</p>
+    <p><strong>Ajustement 2 :</strong> Une journée de repos entre IOA+USF et Epic Universe. Pas un luxe — une nécessité pour profiter d'Epic avec l'énergie qu'il mérite.</p>
+    <p><strong>Ajustement 3 :</strong> Avec l'Express en poche — ne pas se forcer à courir au rope drop à 7h30. Dormez un peu plus. L'Express couvre l'essentiel.</p>
+    <p>Ce qui reste, quoi qu'il arrive : Hagrid's Motorbike de nuit dans la Forêt Interdite est le moment le plus fort du voyage. Certaines attractions méritent d'être vécues deux fois.</p>
+  </div>
+
+  <div class="footer">
+    Famille Gélinas-Martel · Universal Orlando Resort · Avril 2026 · IOA · USF · Epic Universe
+  </div>
+
+</div>
 
 <script>
-var DATA=[
-
-// ── STEP 0 : PERCEPTIONS GÉNÉRALES ──
-{title:'Perceptions des malentendants québécois',ecart:'Même point de départ',neg:false,html:
-'<div class="sr">'+
-'<div class="ms"><div class="v qc">680 000</div><div class="l">Québécois malentendants de 40 ans +</div></div>'+
-'<div class="ms"><div class="v">74 %</div><div class="l">qualifient leur audition de « moyenne »</div></div>'+
-'<div class="ms"><div class="v delta">26 %</div><div class="l">qualifient leur audition de « mauvaise »</div></div>'+
-'</div>'+
-'<h4>Réticences à l\'égard des appareils auditifs (% d\'accord)</h4>'+
-'<p class="base">Base : ensemble des répondants (n = 500) — QF1.</p>'+
-'<div class="rl">'+
-'<div class="r"><div class="r-top"><span class="rn">« Si la perte auditive est légère, le port d\'appareil(s) auditif(s) n\'est pas toujours nécessaire »</span><span class="rp">75 %</span></div><div class="rt"><div class="rf" style="width:75%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Les appareils auditifs sont très dispendieux. Leur acquisition est justifiée seulement pour un problème auditif sévère »</span><span class="rp">75 %</span></div><div class="rt"><div class="rf" style="width:75%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Le port d\'appareil(s) auditif(s) est incommodant / inconfortable »</span><span class="rp">52 %</span></div><div class="rt"><div class="rf" style="width:52%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Porter une aide auditive fait vieux »</span><span class="rp">42 %</span></div><div class="rt"><div class="rf" style="width:42%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Le son avec un appareil auditif n\'est pas naturel »</span><span class="rp">40 %</span></div><div class="rt"><div class="rf" style="width:40%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Le port d\'appareil(s) auditif(s) n\'est pas esthétique. Les appareils sont trop visibles et ça fait moche »</span><span class="rp">36 %</span></div><div class="rt"><div class="rf" style="width:36%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Faire faire un appareil auditif est un processus long et fastidieux »</span><span class="rp">35 %</span></div><div class="rt"><div class="rf" style="width:35%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Les gens qui portent un appareil auditif se font juger par la société »</span><span class="rp">25 %</span></div><div class="rt"><div class="rf" style="width:25%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Les appareils auditifs ne sont pas efficaces. Ils ne corrigent pas vraiment les problèmes d\'audition »</span><span class="rp">16 %</span></div><div class="rt"><div class="rf" style="width:16%"></div></div></div>'+
-'</div>'+
-'<div class="ins">Ce ne sont pas des freins à la consultation, mais des perceptions qui colorent l\'ensemble du parcours. 74 % des malentendants jugent leur perte « moyenne » — ce groupe est sous-diagnostiqué et moins enclin à consulter.</div>'
-},
-
-// ── STEP 1 : FREINS À LA CONSULTATION ──
-{title:'Freins à la consultation d\'un professionnel',ecart:'−19 pts vs France',neg:true,html:
-'<div class="sr">'+
-'<div class="ms"><div class="v qc">63 %</div><div class="l">🇨🇦 ont consulté un professionnel</div></div>'+
-'<div class="ms"><div class="v fr">82 %</div><div class="l">🇫🇷 ont discuté avec un ORL ou médecin</div></div>'+
-'<div class="ms"><div class="v delta">37 %</div><div class="l">🇨🇦 n\'ont jamais consulté</div></div>'+
-'</div>'+
-'<h4>Raisons de ne pas avoir consulté un spécialiste</h4>'+
-'<p class="base">Base : n\'ont pas encore consulté un spécialiste pour diagnostic du problème auditif (n = 185) — QD1A / QD1B.</p>'+
-'<div class="rl">'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai une perte auditive trop légère / je n\'ai pas besoin de consulter un spécialiste »</span><span class="rp">39 %</span></div><div class="rt"><div class="rf" style="width:39%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Je n\'ai pas eu le temps de m\'en occuper »</span><span class="rp">25 %</span></div><div class="rt"><div class="rf" style="width:25%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Je n\'ai pas d\'assurance »</span><span class="rp">25 %</span></div><div class="rt"><div class="rf" style="width:25%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Je n\'ai pas les ressources financières »</span><span class="rp">23 %</span></div><div class="rt"><div class="rf" style="width:23%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai peur d\'avoir besoin de porter un appareil auditif »</span><span class="rp">19 %</span></div><div class="rt"><div class="rf" style="width:19%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai l\'impression que c\'est un processus long et fastidieux »</span><span class="rp">18 %</span></div><div class="rt"><div class="rf" style="width:18%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai l\'impression qu\'il n\'y a pas de solution à mon problème auditif »</span><span class="rp">10 %</span></div><div class="rt"><div class="rf" style="width:10%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Je ne sais pas à qui m\'adresser / je ne sais pas par où commencer »</span><span class="rp">10 %</span></div><div class="rt"><div class="rf" style="width:10%"></div></div></div>'+
-'</div>'+
-'<h4>Délai entre le constat du problème et la consultation</h4>'+
-'<p class="base">Base : ceux ayant consulté (n = 315) — QB4A.</p>'+
-'<div class="sr">'+
-'<div class="ms"><div class="v delta">37 %</div><div class="l">attendent 1 an et plus</div></div>'+
-'<div class="ms"><div class="v qc">36 %</div><div class="l">consultent en moins de 3 mois</div></div>'+
-'<div class="ms"><div class="v qc">15 %</div><div class="l">consultent immédiatement</div></div>'+
-'</div>'+
-'<div class="ins"><strong>48 % des freins sont financiers</strong> (absence d\'assurance + manque de ressources). En France, le décrochage à cette étape n\'est que de 18 % (EuroTrak 2025). Le « 100 % santé » élimine la barrière financière dès le premier contact.</div>'
-},
-
-// ── STEP 2 : RECOMMANDATION ──
-{title:'Recommandation de prothèse — l\'écart le plus large',ecart:'−34 pts vs France',neg:true,html:
-'<div class="sr">'+
-'<div class="ms"><div class="v qc">33 %</div><div class="l">🇨🇦 reçoivent une recommandation<br><span style="font-size:.65rem;color:var(--text-muted)">(53 % des 63 % ayant consulté = 33 % du total)</span></div></div>'+
-'<div class="ms"><div class="v fr">67 %</div><div class="l">🇫🇷 reçoivent une recommandation</div></div>'+
-'<div class="ms"><div class="v delta">−34 pts</div><div class="l">Écart le plus large du parcours</div></div>'+
-'</div>'+
-'<h4>Pourquoi cet écart ?</h4>'+
-'<p class="base">Le sondage Ad hoc ne mesure pas directement les freins à la recommandation. L\'écart s\'explique par des facteurs systémiques documentés.</p>'+
-'<div class="ins" style="margin-top:0">Au Québec, l\'anticipation du coût pour le patient par le professionnel peut freiner la recommandation. En France, la couverture intégrale lève ce frein systémique : le médecin sait que le patient pourra se procurer une prothèse sans reste à charge.</div>'+
-'<h4>Le parcours français détaillé (EuroTrak 2025, n = 1 304)</h4>'+
-'<div class="rl">'+
-'<div class="r"><div class="r-top"><span class="rn">Discuté avec ORL / médecin</span><span class="rp" style="color:var(--green)">82 %</span></div><div class="rt"><div class="rf" style="width:82%;background:var(--green)"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">Recommandation positive (ORL ou médecin)</span><span class="rp" style="color:var(--green)">67 %</span></div><div class="rt"><div class="rf" style="width:67%;background:var(--green)"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">Discuté avec audioprothésiste / audiologiste</span><span class="rp" style="color:var(--green)">58 %</span></div><div class="rt"><div class="rf" style="width:58%;background:var(--green)"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">A acheté des prothèses</span><span class="rp" style="color:var(--green)">55 %</span></div><div class="rt"><div class="rf" style="width:55%;background:var(--green)"></div></div></div>'+
-'</div>'+
-'<h4>Facteur n° 1 à l\'international (37 pays OCDE)</h4>'+
-'<p class="base">Johnson & Bisgaard (2024), International Journal of Audiology — régression multivariée.</p>'+
-'<div class="rl">'+
-'<div class="r"><span class="rn" style="font-weight:700">Niveau de subvention</span><div class="rt"><div class="rf" style="width:90%;background:var(--teal)"></div></div><span class="rp" style="color:var(--teal)">1er</span></div>'+
-'<div class="r"><span class="rn" style="font-weight:700">Revenu national brut / hab.</span><div class="rt"><div class="rf" style="width:65%;background:var(--teal)"></div></div><span class="rp" style="color:var(--teal)">2e</span></div>'+
-'</div>'
-},
-
-// ── STEP 3 : FREINS À L'ACHAT ──
-{title:'Freins à l\'acquisition / l\'utilisation d\'une prothèse',ecart:'−30 pts vs France',neg:true,html:
-'<div class="sr">'+
-'<div class="ms"><div class="v qc">25 %</div><div class="l">🇨🇦 possèdent des prothèses<br><span style="font-size:.65rem;color:var(--text-muted)">(76 % des 167 à qui on a recommandé)</span></div></div>'+
-'<div class="ms"><div class="v fr">55 %</div><div class="l">🇫🇷 possèdent des prothèses</div></div>'+
-'<div class="ms"><div class="v delta">−30 pts</div><div class="l">Écart final</div></div>'+
-'</div>'+
-'<h4>Raisons de ne pas avoir acquis / de ne pas utiliser l\'appareil</h4>'+
-'<p class="base">Base : n\'a pas fait l\'acquisition ou ne porte pas / rarement son appareil malgré une recommandation (n = 57) — QC1AB / QC2AB.</p>'+
-'<div class="rl">'+
-'<div class="r"><div class="r-top"><span class="rn">« À cause du prix, ce sont des appareils très dispendieux »</span><span class="rp">46 %</span></div><div class="rt"><div class="rf" style="width:46%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai une perte auditive trop légère / j\'entends suffisamment bien sans appareil »</span><span class="rp">38 %</span></div><div class="rt"><div class="rf" style="width:38%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Le port d\'un appareil auditif est incommodant / inconfortable »</span><span class="rp">31 %</span></div><div class="rt"><div class="rf" style="width:31%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai de la difficulté à accepter que j\'aie besoin d\'un appareil auditif »</span><span class="rp">27 %</span></div><div class="rt"><div class="rf" style="width:27%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai l\'impression que ça me fait vieillir / porter une aide auditive fait vieux »</span><span class="rp">16 %</span></div><div class="rt"><div class="rf" style="width:16%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« J\'ai des doutes sur l\'efficacité des appareils auditifs »</span><span class="rp">15 %</span></div><div class="rt"><div class="rf" style="width:15%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Je juge ne pas avoir besoin d\'un appareil auditif »</span><span class="rp">10 %</span></div><div class="rt"><div class="rf" style="width:10%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Je ne trouve pas ça esthétiquement beau »</span><span class="rp">9 %</span></div><div class="rt"><div class="rf" style="width:9%"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">« Je ne suis pas prêt à m\'afficher publiquement avec un appareil auditif »</span><span class="rp">9 %</span></div><div class="rt"><div class="rf" style="width:9%"></div></div></div>'+
-'</div>'+
-'<h4>L\'effet « 100 % santé » — évolution du taux d\'adoption en France</h4>'+
-'<p class="base">EuroTrak France, séries 2009–2025 (Anovum / EHIMA).</p>'+
-'<div class="rl">'+
-'<div class="r"><div class="r-top"><span class="rn">2009</span><span class="rp" style="color:var(--green)">29,8 %</span></div><div class="rt"><div class="rf" style="width:30%;background:var(--green)"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">2015</span><span class="rp" style="color:var(--green)">34,1 %</span></div><div class="rt"><div class="rf" style="width:34%;background:var(--green)"></div></div></div>'+
-'<div class="r"><div class="r-top"><span class="rn">2022</span><span class="rp" style="color:var(--green)">45,7 %</span></div><div class="rt"><div class="rf" style="width:46%;background:var(--green)"></div></div></div>'+
-'<div class="r"><span class="rn" style="font-weight:700">2025</span><div class="rt"><div class="rf" style="width:56%;background:var(--green)"></div></div><span class="rp" style="color:var(--green);font-weight:700">55,5 %</span></div>'+
-'</div>'+
-'<div class="ins">Le prix est le premier frein au Québec (46 %). En France, <strong>90 % des porteurs reçoivent un remboursement</strong> d\'un tiers payeur et le taux d\'adoption a presque doublé en 16 ans. 63 % des Français appareillés pensent qu\'ils auraient dû s\'équiper plus tôt.</div>'
+function toggleRide(card) {
+  card.classList.toggle('open');
 }
-];
-
-function closeAll(){
-  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('on')});
-  document.querySelectorAll('.detail').forEach(function(p){p.classList.remove('open');p.innerHTML=''});
-}
-
-document.querySelectorAll('.step').forEach(function(step){
-  step.addEventListener('click',function(){
-    var i=parseInt(step.getAttribute('data-s'));
-    var d=DATA[i];
-    var det=document.getElementById('det-'+i);
-    var wasOpen=det.classList.contains('open');
-
-    closeAll();
-
-    if(wasOpen) return;
-
-    step.classList.add('on');
-    det.innerHTML=
-      '<div class="d-head">'+
-        '<div style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap">'+
-          '<span class="d-title">'+d.title+'</span>'+
-          '<span class="d-ecart" style="background:'+(d.neg?'rgba(192,57,43,.1)':'rgba(39,174,96,.12)')+';color:'+(d.neg?'var(--red)':'var(--green)')+'">'+d.ecart+'</span>'+
-        '</div>'+
-        '<button class="d-close" id="close-btn-'+i+'">✕</button>'+
-      '</div>'+
-      '<div class="d-body">'+d.html+'</div>';
-
-    det.offsetHeight;
-    det.classList.add('open');
-
-    document.getElementById('close-btn-'+i).addEventListener('click',function(e){
-      e.stopPropagation();
-      closeAll();
-    });
-  });
-});
 </script>
 </body>
 </html>
